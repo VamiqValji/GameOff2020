@@ -23,8 +23,8 @@ public class RocketController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log("x: " + rb.velocity.x);
-        Debug.Log("y: " + rb.velocity.y);
+        //Debug.Log("x: " + rb.velocity.x);
+        //Debug.Log("y: " + rb.velocity.y);
     }
 
     public void FixedUpdate()
@@ -32,21 +32,13 @@ public class RocketController : MonoBehaviour
         movementX = -(Input.GetAxis("Horizontal"));
         if ((Input.GetButton("Horizontal") == true) & (movementX != 0))
         {
-            //rb.velocity = new Vector2(rb.velocity.x * movementX, speed);
             rb.AddForce(transform.up * rocketForce);
-            //ConstantForce2D = (rocketForce) 
-            //rb.rotation = rocketRotation;
-            //transform.Rotate(transform.rotation.x, transform.rotation.y, transform.rotation.z * rocketRotation);
             transform.Rotate(0.0f, 0.0f, rocketRotation * movementX * Time.deltaTime, Space.Self);
             // MAX OUT VELOCITY
             if (rb.velocity.y > maxYVelocity)
             {
                 rb.velocity = new Vector2(rb.velocity.x, maxYVelocity);
             }
-            //if (rb.velocity.y < -maxYVelocity)
-            //{
-            //    rb.velocity = new Vector2(rb.velocity.x, -maxYVelocity);
-            //}
             if (rb.velocity.x > maxXVelocity)
             {
                 rb.velocity = new Vector2(maxXVelocity, rb.velocity.y);
@@ -60,6 +52,13 @@ public class RocketController : MonoBehaviour
                 //rb.velocity = new Vector2(-movementX * 5, rb.velocity.y);
                 rb.AddForce(transform.right * movementX * 1.5f);
             }
+        }
+    }
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Checks"))
+        {
+            rb.position = respawnPoint;
         }
     }
 }
