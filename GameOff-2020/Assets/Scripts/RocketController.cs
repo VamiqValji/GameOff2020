@@ -13,6 +13,7 @@ public class RocketController : MonoBehaviour
     public float movementX = 0f;
     public float maxYVelocity = 5f;
     public float maxXVelocity = 5f;
+    public float highScore;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,6 +26,7 @@ public class RocketController : MonoBehaviour
     {
         //Debug.Log("x: " + rb.velocity.x);
         //Debug.Log("y: " + rb.velocity.y);
+        //Debug.Log(Time.deltaTime);
     }
 
     public void FixedUpdate()
@@ -59,6 +61,7 @@ public class RocketController : MonoBehaviour
         if (collision.gameObject.CompareTag("Checks"))
         {
             rb.position = respawnPoint;
+            GetComponent<Score>().ScoreReset(); // Call function from "Score.cs"
         }
     }
 }
