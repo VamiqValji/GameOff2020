@@ -28,9 +28,9 @@ public class Score : MonoBehaviour
         if (score > highscore)
         {
             highscore = score;
+            GetComponent<Highscore>().NewHighscore(highscore);
         }
         scoreText.text = (score* 10).ToString("0");
-        Debug.Log(highscore);
     }
     public void ScoreReset()
     {
