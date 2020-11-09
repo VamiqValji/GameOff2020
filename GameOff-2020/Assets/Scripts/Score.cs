@@ -28,9 +28,8 @@ public class Score : MonoBehaviour
         if (score > highscore)
         {
             highscore = score;
-            GetComponent<Highscore>().NewHighscore(highscore);
         }
-        scoreText.text = (score* 10).ToString("0");
+        scoreText.text = (score * 10).ToString("0");
     }
     public void ScoreReset()
     {

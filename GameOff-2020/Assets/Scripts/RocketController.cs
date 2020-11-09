@@ -61,6 +61,8 @@ public class RocketController : MonoBehaviour
         if (collision.gameObject.CompareTag("Checks"))
         {
             rb.position = respawnPoint;
+            rb.rotation = 0f;
+            rb.velocity = new Vector2(0, 0);
             GetComponent<Score>().ScoreReset(); // Call function from "Score.cs"
         }
     }

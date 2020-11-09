@@ -7,21 +7,30 @@ using UnityEngine.UI;
 
 public class Highscore : MonoBehaviour
 {
-    public Text HighscoreText;
+    public float highscore;
+    public float score;
+    public Transform player;
+    public Text highscoreText;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        highscore = 0;
+        score = 0;
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        
-    }
-    public void NewHighscore(highscore)
-    {
-        HighscoreText.text = (highscore * 10).ToString("0");
+        score = player.position.y;
+        if (score < 0)
+        {
+            score = 0;
+        }
+        if (score > highscore)
+        {
+            highscore = score;
+        }
+        highscoreText.text = (highscore * 10).ToString("0");
     }
 }
