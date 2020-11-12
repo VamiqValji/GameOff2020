@@ -64,10 +64,7 @@ public class RocketController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Checks"))
         {
-            rb.position = respawnPoint;
-            rb.rotation = 0f;
-            rb.velocity = new Vector2(0, 0);
-            GetComponent<Score>().ScoreReset(); // Call function from "Score.cs"
+            Die();
         }
         if (collision.gameObject.CompareTag("LeftChecks"))
         {
@@ -77,5 +74,16 @@ public class RocketController : MonoBehaviour
         {
             rb.position = new Vector2(rb.position.x -18f, rb.position.y);
         }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+            Die();
+        }
+    }
+    public void Die()
+    {
+        rb.position = respawnPoint;
+        rb.rotation = 0f;
+        rb.velocity = new Vector2(0, 0);
+        GetComponent<Score>().ScoreReset(); // Call function from "Score.cs"
     }
 }
