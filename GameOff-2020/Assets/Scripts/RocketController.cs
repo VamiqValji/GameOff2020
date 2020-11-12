@@ -24,14 +24,7 @@ public class RocketController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (rb.position.y < 1000)
-        {
-            //Debug.Log(Mathf.Round(rb.position.y));
-            if (Mathf.Round(rb.position.y) % 5 == 0 && rb.position.y != 0)
-            {
-                GetComponent<LevelManager>().SpawnBird(rb.position.y);
-            }
-        }
+
     }
     public void FixedUpdate()
     {
