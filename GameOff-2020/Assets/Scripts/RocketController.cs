@@ -15,6 +15,8 @@ public class RocketController : MonoBehaviour
     public float maxXVelocity = 5f;
     public float highScore;
     public LevelManager LevelManagerScript;
+    public Transform LeftSideCheckPoint;
+    public Transform RightSideCheckPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -67,13 +69,13 @@ public class RocketController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("LeftChecks"))
         {
-            rb.position = new Vector2 (rb.position.x + 18f, rb.position.y);
+            rb.position = new Vector2 (RightSideCheckPoint.position.x, rb.position.y);
         }
         if (collision.gameObject.CompareTag("RightChecks"))
         {
-            rb.position = new Vector2(rb.position.x -18f, rb.position.y);
+            rb.position = new Vector2(LeftSideCheckPoint.position.x, rb.position.y);
         }
-        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.layer != 11)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
             Die();
         }
@@ -82,7 +84,7 @@ public class RocketController : MonoBehaviour
     {
         rb.position = respawnPoint;
         rb.rotation = 0f;
-        rb.velocity = new Vector2(0, 0);
+        rb.velocity = new Vector3(0, 0, 0);
         LevelManagerScript.PlayerDeath();
     }
 }
