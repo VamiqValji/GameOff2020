@@ -5,7 +5,7 @@ using UnityEngine;
 public class BirdScript : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float birdMovement = 10f;
+    public float birdMovement = 5f;
     // Start is called before the first frame update
     void Start()
     {
@@ -15,17 +15,15 @@ public class BirdScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (transform.localScale.x > 0) // Not negative
+        if (transform.localScale.x > 0)
         {
-            //rb.position = new Vector2(rb.position.x + (birdMovement * 1), rb.position.y);
-            //rb.AddForce(transform.right * -birdMovement);
-            //Debug.Log(rb.velocity.x);
-            rb.velocity = new Vector2(-birdMovement, rb.velocity.y);
+            //rb.velocity = new Vector2(-birdMovement, rb.velocity.y);
+            rb.velocity = Vector2.right * -birdMovement * Time.deltaTime;
         }
-        else // Negative
+        else
         {
-            //rb.AddForce(transform.right * birdMovement);
-            //Debug.Log(rb.velocity.x);
+            //rb.velocity = new Vector2(-birdMovement, rb.velocity.y);
+            rb.velocity = Vector2.right * birdMovement * Time.deltaTime;
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
