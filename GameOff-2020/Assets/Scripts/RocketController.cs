@@ -14,6 +14,7 @@ public class RocketController : MonoBehaviour
     public float maxYVelocity = 5f;
     public float maxXVelocity = 5f;
     public float highScore;
+    public LevelManager LevelManagerScript;
     // Start is called before the first frame update
     void Start()
     {
@@ -81,6 +82,6 @@ public class RocketController : MonoBehaviour
         rb.position = respawnPoint;
         rb.rotation = 0f;
         rb.velocity = new Vector2(0, 0);
-        GetComponent<Score>().ScoreReset(); // Call function from "Score.cs"
+        LevelManagerScript.PlayerDeath();
     }
 }

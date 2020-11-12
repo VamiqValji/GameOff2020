@@ -1545,7 +1545,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.35, y: -0.06}
+  m_Offset: {x: -0.35, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -2225,6 +2225,7 @@ MonoBehaviour:
   maxYVelocity: 3.5
   maxXVelocity: 3
   highScore: 0
+  LevelManagerScript: {fileID: 2010157870}
 --- !u!1 &1958942843
 GameObject:
   m_ObjectHideFlags: 0
@@ -2354,7 +2355,7 @@ MonoBehaviour:
   BirdRightPrefab: {fileID: 8504813278164707344, guid: 9d6d2906de8e2724c99a1328a7a97bfd,
     type: 3}
   Player: {fileID: 1894938782}
-  WaitingTime: 3
+  WaitingTime: 1
 --- !u!4 &2010157871
 Transform:
   m_ObjectHideFlags: 0

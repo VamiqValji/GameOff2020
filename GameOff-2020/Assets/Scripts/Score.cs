@@ -31,8 +31,8 @@ public class Score : MonoBehaviour
         }
         scoreText.text = (score * 10).ToString("0");
     }
-    public void ScoreReset()
-    {
-        score = 0;
-    }
+    //public void ScoreReset()
+    //{
+    //    score = 0;
+    //}
 }
