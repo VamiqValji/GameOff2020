@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 158510505}
   m_Layer: 0
   m_Name: SideChecksLeft
-  m_TagString: Checks
+  m_TagString: LeftChecks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1201,7 +1201,7 @@ GameObject:
   - component: {fileID: 360974916}
   m_Layer: 0
   m_Name: SideChecksRight
-  m_TagString: Checks
+  m_TagString: RightChecks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

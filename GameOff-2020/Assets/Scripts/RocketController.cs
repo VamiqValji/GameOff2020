@@ -54,6 +54,10 @@ public class RocketController : MonoBehaviour
                 //rb.velocity = new Vector2(-movementX * 5, rb.velocity.y);
                 rb.AddForce(transform.right * movementX * 1.5f);
             }
+            //if (rb.rotation < 30f || rb.rotation > -30f)
+            //{
+            //    transform.Rotate(0.0f, 0.0f, rb.velocity.x * rocketRotation * movementX * Time.deltaTime, Space.Self);
+            //}
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -64,6 +68,14 @@ public class RocketController : MonoBehaviour
             rb.rotation = 0f;
             rb.velocity = new Vector2(0, 0);
             GetComponent<Score>().ScoreReset(); // Call function from "Score.cs"
+        }
+        if (collision.gameObject.CompareTag("LeftChecks"))
+        {
+            rb.position = new Vector2 (rb.position.x + 18f, rb.position.y);
+        }
+        if (collision.gameObject.CompareTag("RightChecks"))
+        {
+            rb.position = new Vector2(rb.position.x -18f, rb.position.y);
         }
     }
 }

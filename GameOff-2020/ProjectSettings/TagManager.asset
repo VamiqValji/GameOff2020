@@ -5,6 +5,8 @@ TagManager:
   serializedVersion: 2
   tags:
   - Checks
+  - RightChecks
+  - LeftChecks
   layers:
   - Default
   - TransparentFX
