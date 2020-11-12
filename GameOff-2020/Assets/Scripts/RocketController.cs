@@ -73,7 +73,7 @@ public class RocketController : MonoBehaviour
         {
             rb.position = new Vector2(rb.position.x -18f, rb.position.y);
         }
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && collision.gameObject.layer != 11)
         {
             Die();
         }
