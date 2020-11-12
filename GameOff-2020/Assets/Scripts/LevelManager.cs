@@ -9,6 +9,7 @@ public class LevelManager : MonoBehaviour
     private int randNum;
     private float Timer;
     public int WaitingTime = 3;
+    private bool canSpawn = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +19,19 @@ public class LevelManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-    }
-    public void SpawnBird(float PlayerPos)
-    {
         Timer += Time.deltaTime;
         if (Timer > WaitingTime)
         {
-
+            Debug.Log("3 seconds elapsed");
+            Timer = 0;
+            canSpawn = true;
+        }
+    }
+    public void SpawnBird(float PlayerPos)
+    {
+        if (canSpawn == true)
+        {
+            Debug.Log("test123");
             randNum = Random.Range(1, 2);
             if (randNum == 1)
             {
@@ -39,6 +45,7 @@ public class LevelManager : MonoBehaviour
             }
 
             Timer = 0;
+            canSpawn = false;
         }
     }
 }

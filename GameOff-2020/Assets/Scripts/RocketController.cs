@@ -24,11 +24,15 @@ public class RocketController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log("x: " + rb.velocity.x);
-        //Debug.Log("y: " + rb.velocity.y);
-        //Debug.Log(Time.deltaTime);
+        if (rb.position.y < 1000)
+        {
+            //Debug.Log(Mathf.Round(rb.position.y));
+            if (Mathf.Round(rb.position.y) % 5 == 0 && rb.position.y != 0)
+            {
+                GetComponent<LevelManager>().SpawnBird(rb.position.y);
+            }
+        }
     }
-
     public void FixedUpdate()
     {
         movementX = -(Input.GetAxis("Horizontal"));
@@ -53,15 +57,6 @@ public class RocketController : MonoBehaviour
             {
                 //rb.velocity = new Vector2(-movementX * 5, rb.velocity.y);
                 rb.AddForce(transform.right * movementX * 1.5f);
-            }
-            if (rb.position.y < 1000)
-            {
-                Debug.Log(rb.position.y);
-                if (Mathf.Round(rb.position.y) % 5 == 0)
-                {
-                    Debug.Log("t");
-                    //GetComponent<LevelManager>().SpawnBird(rb.position.y);
-                }
             }
             //if (rb.rotation < 30f || rb.rotation > -30f)
             //{
