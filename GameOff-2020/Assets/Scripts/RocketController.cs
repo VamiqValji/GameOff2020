@@ -15,6 +15,7 @@ public class RocketController : MonoBehaviour
     public float maxXVelocity = 5f;
     public float highScore;
     public LevelManager LevelManagerScript;
+
     // Start is called before the first frame update
     void Start()
     {

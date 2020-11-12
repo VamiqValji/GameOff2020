@@ -4,14 +4,19 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    // BIRD PREFABS
     public GameObject BirdLeftPrefab;
     public GameObject BirdRightPrefab;
     public Transform Player;
     private int randNum;
     private float Timer;
     public int WaitingTime = 1;
+    public int WaitingTimeClouds = 4;
     private bool canSpawn = true;
     private GameObject[] Enemy;
+    //CLOUD PREFABS
+    public GameObject CloudBig;
+    public GameObject CloudSmall;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,7 +35,7 @@ public class LevelManager : MonoBehaviour
             canSpawn = true;
         }
         // BIRD SPAWN
-        if (Player.transform.position.y < 1000)
+        if (Player.transform.position.y < 100)
         {
             //Debug.Log("working outer");
             //Debug.Log(Mathf.Round(rb.position.y));
@@ -43,6 +48,12 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+        // CLOUD SPAWN
+        if (Player.transform.position.y < 70)
+        {
+            
+        }
+
     }
     public void SpawnBird()
     {
