@@ -74,18 +74,18 @@ public class LevelManager : MonoBehaviour
 
     public void SpawnBird()
     {
-        Debug.Log("test123");
+        //Debug.Log("test123");
         randNum = Random.Range(1, 3);
         Debug.Log(randNum);
         if (randNum == 1)
         {
-            Debug.Log("bird spawned");
+            //Debug.Log("bird spawned");
             Instantiate(BirdLeftPrefab, new Vector2(9, Player.transform.position.y + 10), transform.rotation);
             Debug.Log(Player.transform.position.y + 10);
         }
         else // randNum
         {
-            Debug.Log("bird spawned");
+            //Debug.Log("bird spawned");
             Instantiate(BirdRightPrefab, new Vector2(-9, Player.transform.position.y + 10), transform.rotation);
             Debug.Log(Player.transform.position.y + 10);
         }
@@ -104,13 +104,13 @@ public class LevelManager : MonoBehaviour
         Debug.Log(randNumClouds);
         if (randNumClouds == 1)
         {
-            Debug.Log("cloud spawned");
+            //Debug.Log("cloud spawned");
             Instantiate(CloudBig, new Vector2(9, Player.transform.position.y + 7), transform.rotation);
             Debug.Log(Player.transform.position.y + 10);
         }
         else // randNumClouds
         {
-            Debug.Log("cloud spawned");
+            //Debug.Log("cloud spawned");
             Instantiate(CloudSmall, new Vector2(-9, Player.transform.position.y + 7), transform.rotation);
             Debug.Log(Player.transform.position.y + 10);
         }
