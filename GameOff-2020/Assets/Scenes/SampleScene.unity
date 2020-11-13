@@ -1434,9 +1434,9 @@ GameObject:
   - component: {fileID: 769490724}
   - component: {fileID: 769490726}
   - component: {fileID: 769490725}
-  m_Layer: 0
+  m_Layer: 12
   m_Name: MiddleSideCheck (Follows Player)
-  m_TagString: Untagged
+  m_TagString: Checks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1493,7 +1493,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f847b84557b85824e9cbcef9ef727dba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BottomFollowSideCheck: {fileID: 769490723}
+  distance: 0
+  player: {fileID: 1894938782}
+  bottomSideCheck: {fileID: 769490724}
+  respawnPoint: {x: 0, y: 0, z: 0}
 --- !u!1 &842514578
 GameObject:
   m_ObjectHideFlags: 0
@@ -7042,10 +7045,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   highscore: 0
   score: 0
-  highscoreForLevel: 0
   player: {fileID: 1894938782}
   highscoreText: {fileID: 1802006944}
-  BottomSideCheckScript: {fileID: 769490726}
 --- !u!114 &1802006944
 MonoBehaviour:
   m_ObjectHideFlags: 0

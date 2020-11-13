@@ -76,7 +76,7 @@ public class LevelManager : MonoBehaviour
     {
         //Debug.Log("test123");
         randNum = Random.Range(1, 3);
-        Debug.Log(randNum);
+        //Debug.Log(randNum);
         if (randNum == 1)
         {
             //Debug.Log("bird spawned");
@@ -101,7 +101,7 @@ public class LevelManager : MonoBehaviour
     public void SpawnClouds()
     {
         randNumClouds = Random.Range(1, 3);
-        Debug.Log(randNumClouds);
+        //Debug.Log(randNumClouds);
         if (randNumClouds == 1)
         {
             //Debug.Log("cloud spawned");
