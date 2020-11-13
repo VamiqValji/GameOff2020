@@ -17,6 +17,8 @@ public class RocketController : MonoBehaviour
     public LevelManager LevelManagerScript;
     public Transform LeftSideCheckPoint;
     public Transform RightSideCheckPoint;
+    public ParticleSystem ParticleSystem; // Stores the module in a local variable
+    public int RocketParticleAmount = 10;
 
     // Start is called before the first frame update
     void Start()
@@ -28,13 +30,15 @@ public class RocketController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        //ParticleSystem.emission.enabled = false;
+        //ParticleSystem.EmissionModule.enabled = false;
     }
     public void FixedUpdate()
     {
         movementX = -(Input.GetAxis("Horizontal"));
         if ((Input.GetButton("Horizontal") == true) & (movementX != 0))
         {
+            ParticleSystem.Emit(RocketParticleAmount);
             rb.AddForce(transform.up * rocketForce);
             transform.Rotate(0.0f, 0.0f, rocketRotation * movementX * Time.deltaTime, Space.Self);
             // MAX OUT VELOCITY
