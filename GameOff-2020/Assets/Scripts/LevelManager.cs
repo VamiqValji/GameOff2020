@@ -71,6 +71,17 @@ public class LevelManager : MonoBehaviour
             }
         }
     }
+    private void FixedUpdate()
+    {
+        Enemy = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject Enemies in Enemy)
+        {
+            if (Enemies.transform.position.y < (Player.transform.position.y - 10f))
+            {
+                Destroy(Enemies);
+            }
+        }
+    }
 
     public void SpawnBird()
     {
