@@ -27,6 +27,9 @@ public class RocketController : MonoBehaviour
 
     public int StarPowerUpMultiplier = 15;
 
+    public ParticleSystem Effect;
+    public int EffectAmount = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -96,22 +99,15 @@ public class RocketController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("PowerUp")) // If hit layer
-            {
-                //Destroy(collision.gameObject);
-                PostProcessingScript.StarPowerUp();
-                StarPowerUp();
-            }
-            else
-            {
                 Die();
-            }
         }
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        Destroy(collision.gameObject);
         PostProcessingScript.StarPowerUp();
         StarPowerUp();
+        Effect.Emit(EffectAmount);
     }
     public void Die()
     {
