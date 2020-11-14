@@ -81,7 +81,15 @@ public class RocketController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            Die();
+            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("PowerUp")) // If hit layer
+            {
+                StarPowerUp();
+                //RocketPowerUp = true;
+            }
+            else
+            {
+                Die();
+            }
         }
     }
     public void Die()
@@ -90,5 +98,10 @@ public class RocketController : MonoBehaviour
         rb.rotation = 0f;
         rb.velocity = new Vector3(0, 0, 0);
         LevelManagerScript.PlayerDeath();
+    }
+    public void StarPowerUp()
+    {
+        Debug.Log("Star hit");
+        //Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
     }
 }

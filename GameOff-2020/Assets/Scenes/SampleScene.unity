@@ -303,8 +303,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -929915377
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8ab8e4013ba18f942bb8ffc8f8aafff3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -1714,8 +1714,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -929915377
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8ab8e4013ba18f942bb8ffc8f8aafff3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7113,8 +7113,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: -929915377
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8ab8e4013ba18f942bb8ffc8f8aafff3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -7274,7 +7274,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: 8.299957, y: -28}
+  m_AnchoredPosition: {x: 8.299927, y: -28}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1802006943
@@ -7685,16 +7685,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6db977ce823582e46b3e150fb12c7f61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Player: {fileID: 1894938782}
+  WaitingTime: 1
+  WaitingTimeClouds: 3
   BirdLeftPrefab: {fileID: 1239663517845281045, guid: e721114860a3fb949a013008d2302c08,
     type: 3}
   BirdRightPrefab: {fileID: 8504813278164707344, guid: 9d6d2906de8e2724c99a1328a7a97bfd,
     type: 3}
-  Player: {fileID: 1894938782}
-  WaitingTime: 1
-  WaitingTimeClouds: 3
   CloudBig: {fileID: 2583786309096950294, guid: fe41507afa4f4a947837202c81598b71,
     type: 3}
   CloudSmall: {fileID: 5167011430368718416, guid: 10ce22abb3a60744e9545aee1bbd8ba7,
+    type: 3}
+  StarPrefab: {fileID: 4251671038899919707, guid: c8ee0c4747773e940a66fc35d1fea1e2,
     type: 3}
 --- !u!4 &2010157871
 Transform:

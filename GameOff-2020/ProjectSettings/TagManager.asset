@@ -8,6 +8,7 @@ TagManager:
   - RightChecks
   - LeftChecks
   - Enemy
+  - PowerUpStar
   layers:
   - Default
   - TransparentFX
@@ -22,7 +23,7 @@ TagManager:
   - Player
   - Clouds
   - BottomSideCheck(Follow)
-  - 
+  - PowerUp
   - 
   - 
   - 
@@ -47,4 +48,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Checks
+    uniqueID: 3365051919
     locked: 0
