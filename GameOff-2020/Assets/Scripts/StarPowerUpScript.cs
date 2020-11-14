@@ -8,8 +8,12 @@ public class StarPowerUpScript : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        //Destroy(gameObject);
-        Debug.Log("star hit");
-        Instantiate(Effect, transform.position, transform.rotation);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("star hit");
+            Instantiate(Effect, transform.position, transform.rotation);
+            Destroy(gameObject);
+            Destroy(Effect, 2f);
+        } 
     }
 }

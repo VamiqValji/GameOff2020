@@ -98,7 +98,7 @@ public class RocketController : MonoBehaviour
         {
             if (collision.collider.gameObject.layer == LayerMask.NameToLayer("PowerUp")) // If hit layer
             {
-                Destroy(collision.gameObject);
+                //Destroy(collision.gameObject);
                 PostProcessingScript.StarPowerUp();
                 StarPowerUp();
             }
