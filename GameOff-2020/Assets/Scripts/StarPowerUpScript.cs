@@ -4,16 +4,12 @@ using UnityEngine;
 
 public class StarPowerUpScript : MonoBehaviour
 {
-    public EffectsPostProcessing PostProcessingScript;
-    public RocketController PlayerScript;
+    public GameObject Effect;
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.CompareTag("Player"))
-        {
-            Destroy(gameObject);
-            PostProcessingScript.StarPowerUp();
-            PlayerScript.StarPowerUp();
-        }
+        //Destroy(gameObject);
+        Debug.Log("star hit");
+        Instantiate(Effect, transform.position, transform.rotation);
     }
 }

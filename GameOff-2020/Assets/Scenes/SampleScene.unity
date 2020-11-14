@@ -7059,7 +7059,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 676f129f7f8fb7e438963349ef99b3b7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7896,3 +7896,87 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 9.37, y: 0.58}
   m_EdgeRadius: 0
+--- !u!1001 &8211779027051330458
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4010528263294935620, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_Name
+      value: StarPowerUp
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4010528263294935627, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7989381696535146214, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041548455198877494, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: PostProcessingScript
+      value: 
+      objectReference: {fileID: 219943638}
+    - target: {fileID: 9041548455198877494, guid: c8ee0c4747773e940a66fc35d1fea1e2,
+        type: 3}
+      propertyPath: PlayerScript
+      value: 
+      objectReference: {fileID: 1894938783}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: c8ee0c4747773e940a66fc35d1fea1e2, type: 3}

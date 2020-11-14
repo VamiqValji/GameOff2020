@@ -82,17 +82,27 @@ public class RocketController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("LeftChecks"))
         {
-            transform.Rotate(0, 0, 0);
+            //transform.rotation = Quaternion.identity;
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 1.5f));
+            rb.velocity = new Vector2(rb.velocity.x / 3, rb.velocity.y);
             rb.position = new Vector2 (RightSideCheckPoint.position.x, rb.position.y);
         }
         if (collision.gameObject.CompareTag("RightChecks"))
         {
-            transform.Rotate(0, 0, 0);
+            //transform.rotation = Quaternion.identity;
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 3f));
+            rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, 3f), rb.velocity.y);
             rb.position = new Vector2(LeftSideCheckPoint.position.x, rb.position.y);
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.collider.gameObject.layer != LayerMask.NameToLayer("PowerUp")) // If hit layer
+            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("PowerUp")) // If hit layer
+            {
+                Destroy(collision.gameObject);
+                PostProcessingScript.StarPowerUp();
+                StarPowerUp();
+            }
+            else
             {
                 Die();
             }
