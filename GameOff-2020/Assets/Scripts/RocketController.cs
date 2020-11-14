@@ -9,6 +9,7 @@ public class RocketController : MonoBehaviour
     private bool isGrounded;
     private Vector3 respawnPoint;
     public float rocketRotation = 0.8f;
+    private float DefaultRocketForce;
     public float rocketForce = 20f;
     public float movementX = 0f;
     public float maxYVelocity = 5f;
@@ -18,13 +19,19 @@ public class RocketController : MonoBehaviour
     public Transform LeftSideCheckPoint;
     public Transform RightSideCheckPoint;
     public ParticleSystem ParticleSystem; // Stores the module in a local variable
+    private int DefaultRocketParticleAmount;
     public int RocketParticleAmount = 10;
+    public EffectsPostProcessing PostProcessingScript;
+
+    public int StarPowerUpMultiplier = 15;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         respawnPoint = rb.position;
+        DefaultRocketForce = rocketForce;
+        DefaultRocketParticleAmount = RocketParticleAmount;
     }
 
     // Update is called once per frame
@@ -73,18 +80,21 @@ public class RocketController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("LeftChecks"))
         {
+            transform.Rotate(0, 0, 0);
             rb.position = new Vector2 (RightSideCheckPoint.position.x, rb.position.y);
         }
         if (collision.gameObject.CompareTag("RightChecks"))
         {
+            transform.Rotate(0, 0, 0);
             rb.position = new Vector2(LeftSideCheckPoint.position.x, rb.position.y);
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
             if (collision.collider.gameObject.layer == LayerMask.NameToLayer("PowerUp")) // If hit layer
             {
+                Destroy(collision.gameObject);
+                PostProcessingScript.StarPowerUp();
                 StarPowerUp();
-                //RocketPowerUp = true;
             }
             else
             {
@@ -98,10 +108,22 @@ public class RocketController : MonoBehaviour
         rb.rotation = 0f;
         rb.velocity = new Vector3(0, 0, 0);
         LevelManagerScript.PlayerDeath();
+        StarPowerUpReset();
     }
-    public void StarPowerUp()
+    private void StarPowerUp()
     {
-        Debug.Log("Star hit");
-        //Physics2D.IgnoreCollision(bullet.GetComponent<Collider2D>(), GetComponent<Collider2D>());
+        if (rocketForce != DefaultRocketForce * StarPowerUpMultiplier)
+        {
+            rocketForce = rocketForce * StarPowerUpMultiplier;
+        }
+        if (RocketParticleAmount != DefaultRocketParticleAmount * (StarPowerUpMultiplier / 5))
+        {
+            RocketParticleAmount = RocketParticleAmount * (StarPowerUpMultiplier / 5);
+        }
+    }
+    public void StarPowerUpReset()
+    {
+        rocketForce = DefaultRocketForce;
+        RocketParticleAmount = DefaultRocketParticleAmount;
     }
 }

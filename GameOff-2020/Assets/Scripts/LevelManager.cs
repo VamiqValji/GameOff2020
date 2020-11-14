@@ -36,14 +36,14 @@ public class LevelManager : MonoBehaviour
         Timer += Time.deltaTime;
         if (Timer > WaitingTime)
         {
-            Debug.Log(WaitingTime + " second(s) elapsed.");
+            //Debug.Log(WaitingTime + " second(s) elapsed.");
             canSpawn = true;
             Timer = 0;
         }
         TimerClouds += Time.deltaTime;
         if (TimerClouds > WaitingTimeClouds)
         {
-            Debug.Log(WaitingTimeClouds + " second(s) elapsed.");
+            //Debug.Log(WaitingTimeClouds + " second(s) elapsed.");
             CanSpawnClouds = true;
             CanSpawnStars = true;
             TimerClouds = 0;
@@ -104,13 +104,12 @@ public class LevelManager : MonoBehaviour
         {
             //Debug.Log("bird spawned");
             Instantiate(BirdLeftPrefab, new Vector2(9, Player.transform.position.y + 10), transform.rotation);
-            Debug.Log(Player.transform.position.y + 10);
+            //Debug.Log(Player.transform.position.y + 10);
         }
         else // randNum
         {
             //Debug.Log("bird spawned");
             Instantiate(BirdRightPrefab, new Vector2(-9, Player.transform.position.y + 10), transform.rotation);
-            Debug.Log(Player.transform.position.y + 10);
         }
     }
     public void PlayerDeath () // Destroys bird game objects
@@ -139,7 +138,7 @@ public class LevelManager : MonoBehaviour
     }
     public void SpawnStars()
     {
-        randNumStars = Random.Range(1, 10);
+        randNumStars = Random.Range(6, 8); //DEBUG MODE: 6, 8 // REGULAR: 1, 10
         if (randNumStars == 7)
         {
             Debug.Log("Star spawned!");
