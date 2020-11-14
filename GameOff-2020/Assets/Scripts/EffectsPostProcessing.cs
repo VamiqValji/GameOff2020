@@ -10,6 +10,19 @@ public class EffectsPostProcessing : MonoBehaviour
     private Vignette Vignette;
     private float VignetteDefault = 0.288f;
     private float VignetteActive = 0f;
+
+    //private Bloom Bloom;
+    //private float BloomDefault = 0.288f;
+    //private float BloomActive = 0f;
+
+    //private DepthOfField DoF;
+    //private float DoFDefault = 0f;
+    //private float DoFActive = 78f;
+
+    private ChromaticAberration Chromatic;
+    private float ChromaticDefault = 0.1f;
+    private float ChromaticActive = 1f;
+
     public RocketController PlayerScript;
 
     // Timer
@@ -22,6 +35,15 @@ public class EffectsPostProcessing : MonoBehaviour
         StarActive = false;
         volume.profile.TryGetSettings(out Vignette); // Pushes whatever the value is, if on
         Vignette.intensity.value = VignetteDefault;
+
+        //volume.profile.TryGetSettings(out Bloom);
+        //Bloom.intensity.value = BloomDefault;
+
+        //volume.profile.TryGetSettings(out DoF);
+        //DoF.focalLength.value = DoFDefault;
+
+        volume.profile.TryGetSettings(out Chromatic);
+        Chromatic.intensity.value = ChromaticDefault;
 
     }
 
@@ -52,6 +74,14 @@ public class EffectsPostProcessing : MonoBehaviour
             Vignette.intensity.value = Mathf.Lerp(Vignette.intensity.value, VignetteActive, 1.5f * Time.deltaTime); // start value, end value, over time
         }
 
+        if (StarActive == false && Chromatic.intensity.value != ChromaticDefault)
+        {
+            Chromatic.intensity.value = Mathf.Lerp(Chromatic.intensity.value, ChromaticDefault, 2f * Time.deltaTime); // start value, end value, over time
+        }
+        if (StarActive == true && Vignette.intensity.value != VignetteActive)
+        {
+            Chromatic.intensity.value = Mathf.Lerp(Chromatic.intensity.value, ChromaticActive, 1.5f * Time.deltaTime); // start value, end value, over time
+        }
 
         //Vignette.intensity.value = Mathf.Lerp(Vignette.intensity.value, 1, 0.5f * Time.deltaTime); // start value, end value, over time
     }
@@ -63,6 +93,7 @@ public class EffectsPostProcessing : MonoBehaviour
     public void Die()
     {
         Vignette.intensity.value = VignetteDefault;
+        Chromatic.intensity.value = ChromaticDefault;
         StarActive = false;
     }
 }

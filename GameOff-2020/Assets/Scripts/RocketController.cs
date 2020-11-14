@@ -22,6 +22,8 @@ public class RocketController : MonoBehaviour
     private int DefaultRocketParticleAmount;
     public int RocketParticleAmount = 10;
     public EffectsPostProcessing PostProcessingScript;
+    //public GameObject birdPrefabLeft;
+    //public GameObject birdPrefabRight;
 
     public int StarPowerUpMultiplier = 15;
 
@@ -108,6 +110,7 @@ public class RocketController : MonoBehaviour
         rb.rotation = 0f;
         rb.velocity = new Vector3(0, 0, 0);
         LevelManagerScript.PlayerDeath();
+        PostProcessingScript.Die();
         StarPowerUpReset();
     }
     private void StarPowerUp()
@@ -120,10 +123,14 @@ public class RocketController : MonoBehaviour
         {
             RocketParticleAmount = RocketParticleAmount * (StarPowerUpMultiplier / 5);
         }
+        //Physics2D.IgnoreCollision(birdPrefabLeft.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
+        //Physics2D.IgnoreCollision(birdPrefabRight.GetComponent<Collider2D>(), GetComponent<Collider2D>(), true);
     }
     public void StarPowerUpReset()
     {
         rocketForce = DefaultRocketForce;
         RocketParticleAmount = DefaultRocketParticleAmount;
+        //Physics2D.IgnoreCollision(birdPrefabLeft.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
+        //Physics2D.IgnoreCollision(birdPrefabRight.GetComponent<Collider2D>(), GetComponent<Collider2D>(), false);
     }
 }
