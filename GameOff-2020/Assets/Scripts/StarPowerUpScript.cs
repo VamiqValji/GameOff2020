@@ -4,16 +4,17 @@ using UnityEngine;
 
 public class StarPowerUpScript : MonoBehaviour
 {
-    public GameObject Effect;
+    public ParticleSystem Effect;
+    public int EffectAmount = 10;
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("star hit");
-            Instantiate(Effect, transform.position, transform.rotation);
+            Effect.Emit(EffectAmount);
             Destroy(gameObject);
-            Destroy(Effect, 2f);
+            //Destroy(Effect, 2f);
         } 
     }
 }

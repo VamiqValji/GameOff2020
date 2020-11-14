@@ -108,6 +108,11 @@ public class RocketController : MonoBehaviour
             }
         }
     }
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        PostProcessingScript.StarPowerUp();
+        StarPowerUp();
+    }
     public void Die()
     {
         rb.position = respawnPoint;
@@ -119,6 +124,7 @@ public class RocketController : MonoBehaviour
     }
     public void StarPowerUp()
     {
+        transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 1.5f));
         if (rocketForce != DefaultRocketForce * StarPowerUpMultiplier)
         {
             rocketForce = rocketForce * StarPowerUpMultiplier;
