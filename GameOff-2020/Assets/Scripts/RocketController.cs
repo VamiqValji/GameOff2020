@@ -92,13 +92,7 @@ public class RocketController : MonoBehaviour
         }
         if (collision.gameObject.CompareTag("Enemy"))
         {
-            if (collision.collider.gameObject.layer == LayerMask.NameToLayer("PowerUp")) // If hit layer
-            {
-                Destroy(collision.gameObject);
-                PostProcessingScript.StarPowerUp();
-                StarPowerUp();
-            }
-            else
+            if (collision.collider.gameObject.layer != LayerMask.NameToLayer("PowerUp")) // If hit layer
             {
                 Die();
             }
@@ -113,7 +107,7 @@ public class RocketController : MonoBehaviour
         PostProcessingScript.Die();
         StarPowerUpReset();
     }
-    private void StarPowerUp()
+    public void StarPowerUp()
     {
         if (rocketForce != DefaultRocketForce * StarPowerUpMultiplier)
         {
