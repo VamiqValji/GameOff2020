@@ -36,12 +36,6 @@ public class EffectsPostProcessing : MonoBehaviour
         volume.profile.TryGetSettings(out Vignette); // Pushes whatever the value is, if on
         Vignette.intensity.value = VignetteDefault;
 
-        //volume.profile.TryGetSettings(out Bloom);
-        //Bloom.intensity.value = BloomDefault;
-
-        //volume.profile.TryGetSettings(out DoF);
-        //DoF.focalLength.value = DoFDefault;
-
         volume.profile.TryGetSettings(out Chromatic);
         Chromatic.intensity.value = ChromaticDefault;
 
@@ -82,8 +76,6 @@ public class EffectsPostProcessing : MonoBehaviour
         {
             Chromatic.intensity.value = Mathf.Lerp(Chromatic.intensity.value, ChromaticActive, 1.5f * Time.deltaTime); // start value, end value, over time
         }
-
-        //Vignette.intensity.value = Mathf.Lerp(Vignette.intensity.value, 1, 0.5f * Time.deltaTime); // start value, end value, over time
     }
 
     public void StarPowerUp()

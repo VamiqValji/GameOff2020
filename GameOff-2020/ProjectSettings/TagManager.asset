@@ -9,6 +9,7 @@ TagManager:
   - LeftChecks
   - Enemy
   - PowerUpStar
+  - CloudBoss
   layers:
   - Default
   - TransparentFX

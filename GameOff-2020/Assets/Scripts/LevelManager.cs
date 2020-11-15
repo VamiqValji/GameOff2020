@@ -15,6 +15,7 @@ public class LevelManager : MonoBehaviour
     private bool CanSpawnClouds;
     private bool CanSpawnStars;
     private bool canSpawn = true;
+    private bool canSpawnCloudBoss = true;
     private GameObject[] Enemy;
     // PREFABS
     public GameObject BirdLeftPrefab;
@@ -22,6 +23,7 @@ public class LevelManager : MonoBehaviour
     public GameObject CloudBig;
     public GameObject CloudSmall;
     public GameObject StarPrefab;
+    public GameObject CloudBoss;
 
     // Start is called before the first frame update
     void Start()
@@ -43,16 +45,13 @@ public class LevelManager : MonoBehaviour
         TimerClouds += Time.deltaTime;
         if (TimerClouds > WaitingTimeClouds)
         {
-            //Debug.Log(WaitingTimeClouds + " second(s) elapsed.");
             CanSpawnClouds = true;
             CanSpawnStars = true;
             TimerClouds = 0;
         }
         // BIRD SPAWN
-        if (Player.transform.position.y < 100)
+        if (Player.transform.position.y < 90)
         {
-            //Debug.Log("working outer");
-            //Debug.Log(Mathf.Round(rb.position.y));
             if (Mathf.Round(Player.transform.position.y) % 5 == 0 && Player.transform.position.y != 0)
             {
                 if (canSpawn == true)
@@ -83,6 +82,15 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+        if (Player.transform.position.y > 100 && canSpawnCloudBoss == true)
+        {
+            Instantiate(CloudBoss, new Vector2(transform.position.x, Player.transform.position.y + 10), transform.rotation);
+            canSpawnCloudBoss = false;
+        }
+        if (Player.transform.position.y > 190)
+        {
+            ResetCloudBoss();
+        }
     }
     void FixedUpdate()
     {
@@ -97,14 +105,10 @@ public class LevelManager : MonoBehaviour
     }
     public void SpawnBird()
     {
-        //Debug.Log("test123");
         randNum = Random.Range(1, 3);
-        //Debug.Log(randNum);
         if (randNum == 1)
         {
-            //Debug.Log("bird spawned");
             Instantiate(BirdLeftPrefab, new Vector2(9, Player.transform.position.y + 10), transform.rotation);
-            //Debug.Log(Player.transform.position.y + 10);
         }
         else // randNum
         {
@@ -123,16 +127,12 @@ public class LevelManager : MonoBehaviour
     public void SpawnClouds()
     {
         randNumClouds = Random.Range(1, 3);
-        //Debug.Log(randNumClouds);
         if (randNumClouds == 1)
         {
-            //Debug.Log("cloud spawned");
             Instantiate(CloudBig, new Vector2(9, Player.transform.position.y + 7), transform.rotation);
-            //Debug.Log(Player.transform.position.y + 10);
         }
         else // randNumClouds
         {
-            //Debug.Log("cloud spawned");
             Instantiate(CloudSmall, new Vector2(-9, Player.transform.position.y + 7), transform.rotation);
         }
     }
@@ -145,5 +145,10 @@ public class LevelManager : MonoBehaviour
             Instantiate(StarPrefab, new Vector2(Random.Range(-8, 8), Player.transform.position.y + 7), transform.rotation);
 
         }
+    }
+    public void ResetCloudBoss()
+    {
+        Destroy(GameObject.FindGameObjectWithTag("CloudBoss"));
+        canSpawnCloudBoss = true;
     }
 }

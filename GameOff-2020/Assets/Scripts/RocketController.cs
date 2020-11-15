@@ -117,6 +117,7 @@ public class RocketController : MonoBehaviour
         LevelManagerScript.PlayerDeath();
         PostProcessingScript.Die();
         StarPowerUpReset();
+        LevelManagerScript.ResetCloudBoss();
     }
     public void StarPowerUp()
     {
