@@ -6,6 +6,8 @@ public class BirdScript : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float birdMovement = 5f;
+    public float MoveBy = 18f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -30,11 +32,11 @@ public class BirdScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("LeftChecks"))
         {
-            rb.position = new Vector2(rb.position.x + 18f, rb.position.y);
+            rb.position = new Vector2(rb.position.x + MoveBy, rb.position.y);
         }
         if (collision.gameObject.CompareTag("RightChecks"))
         {
-            rb.position = new Vector2(rb.position.x - 18f, rb.position.y);
+            rb.position = new Vector2(rb.position.x - MoveBy, rb.position.y);
         }
     }
 }

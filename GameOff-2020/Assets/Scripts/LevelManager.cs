@@ -22,6 +22,8 @@ public class LevelManager : MonoBehaviour
     public GameObject CloudBig;
     public GameObject CloudSmall;
     public GameObject StarPrefab;
+    public GameObject DemonLeftPrefab;
+    public GameObject DemonRightPrefab;
 
     // Start is called before the first frame update
     void Start()
@@ -40,13 +42,7 @@ public class LevelManager : MonoBehaviour
             canSpawn = true;
             Timer = 0;
         }
-        TimerClouds += Time.deltaTime;
-        if (TimerClouds > WaitingTimeClouds)
-        {
-            CanSpawnClouds = true;
-            CanSpawnStars = true;
-            TimerClouds = 0;
-        }
+
         // BIRD SPAWN
         if (Player.transform.position.y < 90)
         {
@@ -68,6 +64,13 @@ public class LevelManager : MonoBehaviour
                 }
             }
             // CLOUD SPAWN
+            TimerClouds += Time.deltaTime;
+            if (TimerClouds > WaitingTimeClouds)
+            {
+                CanSpawnClouds = true;
+                CanSpawnStars = true;
+                TimerClouds = 0;
+            }
             if (Player.transform.position.y < 70)
             {
                 if (Mathf.Round(Player.transform.position.y) % 5 == 0 && Player.transform.position.y != 0)
@@ -77,6 +80,17 @@ public class LevelManager : MonoBehaviour
                         SpawnClouds();
                         CanSpawnClouds = false;
                     }
+                }
+            }
+        }
+        if (Player.transform.position.y > 180)
+        {
+            if (Mathf.Round(Player.transform.position.y) % 5 == 0) //  && Player.transform.position.y != 0
+            {
+                if (canSpawn == true)
+                {
+                    SpawnDemon();
+                    canSpawn = false;
                 }
             }
         }
@@ -133,7 +147,19 @@ public class LevelManager : MonoBehaviour
         {
             Debug.Log("Star spawned!");
             Instantiate(StarPrefab, new Vector2(Random.Range(-8, 8), Player.transform.position.y + 7), transform.rotation);
-
+        }
+    }
+    public void SpawnDemon()
+    {
+        randNum = Random.Range(1, 3);
+        if (randNum == 1)
+        {
+            Instantiate(DemonLeftPrefab, new Vector2(8, Player.transform.position.y + 10), transform.rotation);
+        }
+        else // randNum
+        {
+            //Debug.Log("bird spawned");
+            Instantiate(DemonRightPrefab, new Vector2(-8, Player.transform.position.y + 10), transform.rotation);
         }
     }
 }

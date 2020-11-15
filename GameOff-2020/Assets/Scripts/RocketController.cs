@@ -70,15 +70,6 @@ public class RocketController : MonoBehaviour
                 //rb.velocity = new Vector2(-movementX * 5, rb.velocity.y);
                 rb.AddForce(transform.right * movementX * 1.5f);
             }
-            //if (rb.rotation < 30f || rb.rotation > -30f)
-            //{
-            //    transform.Rotate(0.0f, 0.0f, rb.velocity.x * rocketRotation * movementX * Time.deltaTime, Space.Self);
-            //}
-
-            // CLOUD BOSS CAMERA CHANGE
-            //if (transform.position.y > 100 && transform.position.y < 190)
-            //{
-            //}
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)

@@ -10234,6 +10234,8 @@ MonoBehaviour:
     type: 3}
   StarPrefab: {fileID: 4010528263294935620, guid: c8ee0c4747773e940a66fc35d1fea1e2,
     type: 3}
+  DemonLeftPrefab: {fileID: 0}
+  DemonRightPrefab: {fileID: 0}
 --- !u!4 &2010157871
 Transform:
   m_ObjectHideFlags: 0
