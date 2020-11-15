@@ -37,7 +37,6 @@ public class CloudBoss : MonoBehaviour
             Timer += Time.deltaTime;
             if (Timer > WaitingTime)
             {
-                //Debug.Log(WaitingTime + " second(s) elapsed.");
                 Attack();
                 Timer = 0;
             }
