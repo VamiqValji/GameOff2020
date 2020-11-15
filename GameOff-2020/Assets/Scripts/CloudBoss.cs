@@ -26,7 +26,7 @@ public class CloudBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (player.transform.position.y > 100 && player.transform.position.y < 190)
+        if (player.transform.position.y > 100 && player.transform.position.y < 170)
         {
             // MOVE TO PLAYER
             start = new Vector3(transform.position.x, transform.position.y, transform.position.z);
