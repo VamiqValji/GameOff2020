@@ -6,8 +6,16 @@ public class CloudBoss : MonoBehaviour
 {
     public Transform player;
     public float Distance = 10f;
-    //private bool Active = false;
-    private Vector3 respawnPoint;
+    private Vector2 respawnPoint;
+    public float speed = 10f;
+
+    private float Timer;
+    public int WaitingTime = 3;
+
+    Vector3 start;
+    Vector3 end;
+
+    public GameObject Lightning;
 
     // Start is called before the first frame update
     void Start()
@@ -18,10 +26,25 @@ public class CloudBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        // ATTACK TIMER
+        Timer += Time.deltaTime;
+        if (Timer > WaitingTime)
+        {
+            //Debug.Log(WaitingTime + " second(s) elapsed.");
+            Attack();
+            Timer = 0;
+        }
+
         if (player.transform.position.y > 100 && player.transform.position.y < 190)
         {
-            Debug.Log(transform.position);
-            transform.position = new Vector3( Mathf.Lerp(transform.position.x, player.position.x, 5f), Mathf.Lerp(transform.position.y, player.position.y + Distance, 5f), 0);
+            start = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+            end = new Vector3(player.position.x, player.position.y + Distance, transform.position.z);
+            transform.position = Vector3.Lerp( start, end , speed * Time.deltaTime);
         }
+    }
+    private void Attack()
+    {
+        Instantiate(Lightning, transform.position, transform.rotation);
     }
 }
