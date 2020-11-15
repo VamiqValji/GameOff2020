@@ -15,9 +15,7 @@ public class LevelManager : MonoBehaviour
     private bool CanSpawnClouds;
     private bool CanSpawnStars;
     private bool canSpawn = true;
-    private bool canSpawnCloudBoss = true;
     private GameObject[] Enemy;
-    public CloudBoss CloudBossScript;
     // PREFABS
     public GameObject BirdLeftPrefab;
     public GameObject BirdRightPrefab;
@@ -82,16 +80,7 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
-        //CLOUD BOSS
-        if (Player.transform.position.y > 100 && canSpawnCloudBoss == true)
-        {
-            CloudBossScript.Activation();
-            canSpawnCloudBoss = false;
-        }
-        if (Player.transform.position.y > 190)
-        {
-            ResetCloudBoss();
-        }
+
     }
     void FixedUpdate()
     {
@@ -146,10 +135,5 @@ public class LevelManager : MonoBehaviour
             Instantiate(StarPrefab, new Vector2(Random.Range(-8, 8), Player.transform.position.y + 7), transform.rotation);
 
         }
-    }
-    public void ResetCloudBoss()
-    {
-        Destroy(GameObject.FindGameObjectWithTag("CloudBoss"));
-        canSpawnCloudBoss = true;
     }
 }

@@ -24,7 +24,6 @@ public class RocketController : MonoBehaviour
     public EffectsPostProcessing PostProcessingScript;
     //public GameObject birdPrefabLeft;
     //public GameObject birdPrefabRight;
-
     public int StarPowerUpMultiplier = 15;
 
     public ParticleSystem Effect;
@@ -75,6 +74,11 @@ public class RocketController : MonoBehaviour
             //{
             //    transform.Rotate(0.0f, 0.0f, rb.velocity.x * rocketRotation * movementX * Time.deltaTime, Space.Self);
             //}
+
+            // CLOUD BOSS CAMERA CHANGE
+            //if (transform.position.y > 100 && transform.position.y < 190)
+            //{
+            //}
         }
     }
     private void OnCollisionEnter2D(Collision2D collision)
@@ -117,7 +121,6 @@ public class RocketController : MonoBehaviour
         LevelManagerScript.PlayerDeath();
         PostProcessingScript.Die();
         StarPowerUpReset();
-        LevelManagerScript.ResetCloudBoss();
     }
     public void StarPowerUp()
     {
