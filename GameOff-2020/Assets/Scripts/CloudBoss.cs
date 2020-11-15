@@ -7,6 +7,8 @@ public class CloudBoss : MonoBehaviour
     Transform player;
     public float Distance = 10f;
 
+    private bool Active = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -14,9 +16,23 @@ public class CloudBoss : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
-        //player = GameObject.FindGameObjectWithTag("Player").transform;
-        //transform.position = new Vector2(player.position.x, player.position.y + Distance);
+        if (Active == true)
+        {
+            transform.localPosition = new Vector3(player.position.x, player.position.y + Distance, 0);
+        }
+    }
+    
+    public void Activation()
+    {
+        if (Active == false)
+        {
+            Active = true;
+        }
+        else
+        {
+            Active = false;
+        }
     }
 }

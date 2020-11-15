@@ -17,13 +17,13 @@ public class LevelManager : MonoBehaviour
     private bool canSpawn = true;
     private bool canSpawnCloudBoss = true;
     private GameObject[] Enemy;
+    public CloudBoss CloudBossScript;
     // PREFABS
     public GameObject BirdLeftPrefab;
     public GameObject BirdRightPrefab;
     public GameObject CloudBig;
     public GameObject CloudSmall;
     public GameObject StarPrefab;
-    public GameObject CloudBoss;
 
     // Start is called before the first frame update
     void Start()
@@ -82,9 +82,10 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+        //CLOUD BOSS
         if (Player.transform.position.y > 100 && canSpawnCloudBoss == true)
         {
-            Instantiate(CloudBoss, new Vector2(transform.position.x, Player.transform.position.y + 10), transform.rotation);
+            CloudBossScript.Activation();
             canSpawnCloudBoss = false;
         }
         if (Player.transform.position.y > 190)
