@@ -26,21 +26,21 @@ public class CloudBoss : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-        // ATTACK TIMER
-        Timer += Time.deltaTime;
-        if (Timer > WaitingTime)
-        {
-            //Debug.Log(WaitingTime + " second(s) elapsed.");
-            Attack();
-            Timer = 0;
-        }
-
         if (player.transform.position.y > 100 && player.transform.position.y < 190)
         {
+            // MOVE TO PLAYER
             start = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             end = new Vector3(player.position.x, player.position.y + Distance, transform.position.z);
             transform.position = Vector3.Lerp( start, end , speed * Time.deltaTime);
+
+            // ATTACK TIMER
+            Timer += Time.deltaTime;
+            if (Timer > WaitingTime)
+            {
+                //Debug.Log(WaitingTime + " second(s) elapsed.");
+                Attack();
+                Timer = 0;
+            }
         }
     }
     private void Attack()
