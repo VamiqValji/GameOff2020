@@ -85,7 +85,7 @@ public class LevelManager : MonoBehaviour
         }
         if (Player.transform.position.y > 180)
         {
-            if (Mathf.Round(Player.transform.position.y) % 8 == 0) //  && Player.transform.position.y != 0
+            if (Mathf.Round(Player.transform.position.y) % 10 == 0) //  && Player.transform.position.y != 0
             {
                 if (canSpawn == true)
                 {
@@ -153,7 +153,7 @@ public class LevelManager : MonoBehaviour
         randNum = Random.Range(1, 3);
         if (randNum == 1)
         {
-            Instantiate(DemonLeftPrefab, new Vector2(7.5f, Player.transform.position.y + 10 + randNum), transform.rotation);
+            Instantiate(DemonLeftPrefab, new Vector2(7.5f, Player.transform.position.y + 10 - randNum), transform.rotation);
         }
         else // randNum
         {
