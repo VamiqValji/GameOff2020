@@ -5,9 +5,13 @@ using UnityEngine;
 public class DemonScript : MonoBehaviour
 {
     private Rigidbody2D rb;
-    public float DemonMovement = 5f;
-    public float MoveBy = 17f;
-    public GameObject Fireball;
+    public GameObject FireballLeft;
+    public GameObject FireballRight;
+
+    //public FireballScript FireballScript;
+
+    private float Timer;
+    public int WaitingTime = 3;
 
     // Start is called before the first frame update
     void Start()
@@ -16,29 +20,26 @@ public class DemonScript : MonoBehaviour
     }
 
     // Update is called once per frame
-    void FixedUpdate()
+    void Update()
+    {
+        // BIRD TIMER
+        Timer += Time.deltaTime;
+        if (Timer > WaitingTime)
+        {
+            Shoot();
+            Timer = 0;
+        }
+    }
+
+    private void Shoot()
     {
         if (transform.localScale.x > 0)
         {
-            rb.velocity = Vector2.right * -DemonMovement * Time.deltaTime;
-            //Instantiate(Fireball, new Vector2(8, Player.transform.position.y + 10), transform.rotation);
-
+            Instantiate(FireballLeft, new Vector2(8, transform.position.y), transform.rotation);
         }
         else
         {
-            rb.velocity = Vector2.right * DemonMovement * Time.deltaTime;
-            //Instantiate(Fireball, new Vector2(-8, Player.transform.position.y + 10), transform.rotation);
-        }
-    }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("LeftChecks"))
-        {
-            rb.position = new Vector2(rb.position.x + MoveBy, rb.position.y);
-        }
-        if (collision.gameObject.CompareTag("RightChecks"))
-        {
-            rb.position = new Vector2(rb.position.x - MoveBy, rb.position.y);
+            Instantiate(FireballRight, new Vector2(-8, transform.position.y), transform.rotation);
         }
     }
 }
