@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FireballScript : MonoBehaviour
+public class FireballScriptRight : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float movement = 30f;
@@ -16,7 +16,7 @@ public class FireballScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        rb.velocity = Vector2.right * -movement * Time.deltaTime;
+        rb.velocity = Vector2.right * movement * Time.deltaTime;
     }
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -30,3 +30,4 @@ public class FireballScript : MonoBehaviour
         }
     }
 }
+

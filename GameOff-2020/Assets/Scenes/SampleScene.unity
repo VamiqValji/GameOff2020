@@ -2250,7 +2250,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.10899997, z: -10}
+  m_LocalPosition: {x: -0.06, y: 183.541, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -3383,7 +3383,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079099732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.10899997, z: -10}
+  m_LocalPosition: {x: -0.06, y: 183.541, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1135136612}
@@ -9976,7 +9976,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894938775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -1.18, z: 0}
+  m_LocalPosition: {x: -0.06, y: 182.47, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1111105464}
@@ -10234,8 +10234,10 @@ MonoBehaviour:
     type: 3}
   StarPrefab: {fileID: 4010528263294935620, guid: c8ee0c4747773e940a66fc35d1fea1e2,
     type: 3}
-  DemonLeftPrefab: {fileID: 0}
-  DemonRightPrefab: {fileID: 0}
+  DemonLeftPrefab: {fileID: 8725713533690756786, guid: 2b2f901819c98814ba1cfea36bade031,
+    type: 3}
+  DemonRightPrefab: {fileID: 2668966427773553962, guid: 468cc99f90fcd4a419685b699ab24b20,
+    type: 3}
 --- !u!4 &2010157871
 Transform:
   m_ObjectHideFlags: 0

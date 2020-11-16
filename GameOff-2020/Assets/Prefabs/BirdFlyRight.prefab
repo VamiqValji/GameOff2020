@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8504813278164707348}
   - component: {fileID: 3957324758030770536}
   - component: {fileID: 7586328733468875790}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: BirdFlyRight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -164,3 +164,4 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   birdMovement: 200
+  MoveBy: 18

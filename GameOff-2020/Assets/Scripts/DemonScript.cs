@@ -10,7 +10,7 @@ public class DemonScript : MonoBehaviour
 
     //public FireballScript FireballScript;
 
-    private float Timer;
+    private float Timer = 10f;
     public int WaitingTime = 3;
 
     // Start is called before the first frame update
@@ -22,7 +22,6 @@ public class DemonScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        // BIRD TIMER
         Timer += Time.deltaTime;
         if (Timer > WaitingTime)
         {
@@ -35,11 +34,19 @@ public class DemonScript : MonoBehaviour
     {
         if (transform.localScale.x > 0)
         {
-            Instantiate(FireballLeft, new Vector2(8, transform.position.y), transform.rotation);
+            Instantiate(FireballLeft, new Vector2(6, transform.position.y - 0.4f), transform.rotation);
         }
         else
         {
-            Instantiate(FireballRight, new Vector2(-8, transform.position.y), transform.rotation);
+            Instantiate(FireballRight, new Vector2(-6, transform.position.y - 0.4f), transform.rotation);
         }
+    }
+
+    private void OnCollisionEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.CompareTag("Demon"))
+        {
+            Destroy(collision.gameObject);
+        } 
     }
 }
