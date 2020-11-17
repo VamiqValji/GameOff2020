@@ -10,6 +10,7 @@ TagManager:
   - Enemy
   - PowerUpStar
   - CloudBoss
+  - Demon
   layers:
   - Default
   - TransparentFX

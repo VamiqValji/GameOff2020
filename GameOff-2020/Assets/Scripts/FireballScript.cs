@@ -6,6 +6,7 @@ public class FireballScript : MonoBehaviour
 {
     private Rigidbody2D rb;
     public float movement = 30f;
+    public ParticleSystem ParticleSystem;
 
     // Start is called before the first frame update
     void Start()
@@ -16,6 +17,7 @@ public class FireballScript : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        ParticleSystem.Emit(1);
         rb.velocity = Vector2.right * -movement * Time.deltaTime;
     }
     private void OnCollisionEnter2D(Collision2D collision)
