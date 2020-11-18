@@ -83,7 +83,7 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
-        if (Player.transform.position.y > 180)
+        if (Player.transform.position.y > 180 && Player.transform.position.y < 270)
         {
             if (Mathf.Round(Player.transform.position.y) % 10 == 0) //  && Player.transform.position.y != 0
             {

@@ -6,7 +6,7 @@ public class CloudBoss : MonoBehaviour
 {
     public Transform player;
     public float Distance = 10f;
-    private Vector2 respawnPoint;
+    //private Vector2 respawnPoint;
     public float speed = 10f;
 
     private float Timer;
@@ -20,7 +20,7 @@ public class CloudBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        respawnPoint = transform.position;
+        //respawnPoint = transform.position;
     }
 
     // Update is called once per frame
