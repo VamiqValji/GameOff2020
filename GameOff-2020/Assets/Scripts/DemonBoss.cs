@@ -21,7 +21,8 @@ public class DemonBoss : MonoBehaviour
     public ParticleSystem Middle;
     public ParticleSystem Right;
     public ParticleSystem Left;
-    public ParticleSystem OnDeath;
+
+    public GameObject OnDeath;
 
     private bool Death = false;
 
@@ -69,21 +70,14 @@ public class DemonBoss : MonoBehaviour
 
                 Timer = 0;
             }
-            // DEATH
-            if (Timer > 1f && Death == true)
-            {
-                Destroy(gameObject);
-            }
-            if (Death == true)
-            {
-                OnDeath.Emit(1);
-            }
         }
+
         if (player.transform.position.y > 345)
         {
             if (Death == false)
             {
-                Timer = 0;
+                Instantiate(OnDeath, transform.position, transform.rotation);
+                Destroy(gameObject);
                 Death = true;
             }
         }
