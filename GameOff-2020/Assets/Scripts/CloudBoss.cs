@@ -17,6 +17,11 @@ public class CloudBoss : MonoBehaviour
 
     public GameObject Lightning;
 
+    public ParticleSystem Rain;
+    public GameObject DeathExplosion;
+
+    private bool Death = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -28,6 +33,7 @@ public class CloudBoss : MonoBehaviour
     {
         if (player.transform.position.y > 100 && player.transform.position.y < 170)
         {
+            Rain.Emit(1);
             // MOVE TO PLAYER
             start = new Vector3(transform.position.x, transform.position.y, transform.position.z);
             end = new Vector3(player.position.x, player.position.y + Distance, transform.position.z);
@@ -40,6 +46,12 @@ public class CloudBoss : MonoBehaviour
                 Attack();
                 Timer = 0;
             }
+        }
+        if (player.transform.position.y > 165)
+        {
+            Instantiate(DeathExplosion, transform.position, transform.rotation);
+            Destroy(gameObject);
+            Death = true;
         }
     }
     private void Attack()
