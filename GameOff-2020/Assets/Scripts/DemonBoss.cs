@@ -18,6 +18,13 @@ public class DemonBoss : MonoBehaviour
 
     public GameObject FireballAttack;
 
+    public ParticleSystem Middle;
+    public ParticleSystem Right;
+    public ParticleSystem Left;
+    public ParticleSystem OnDeath;
+
+    private bool Death = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -36,10 +43,13 @@ public class DemonBoss : MonoBehaviour
             if (smoothFollow == true)
             {
                 transform.position = Vector3.Lerp(start, end, speed * Time.deltaTime);
+                Middle.Emit(1);
             }
             else
             {
                 transform.position = Vector3.Lerp(start, end, (speed / 2f) * Time.deltaTime);
+                Right.Emit(1);
+                Left.Emit(1);
             }
 
             // ATTACK TIMER
@@ -59,15 +69,32 @@ public class DemonBoss : MonoBehaviour
 
                 Timer = 0;
             }
+            // DEATH
+            if (Timer > 1f && Death == true)
+            {
+                Destroy(gameObject);
+            }
+            if (Death == true)
+            {
+                OnDeath.Emit(1);
+            }
+        }
+        if (player.transform.position.y > 345)
+        {
+            if (Death == false)
+            {
+                Timer = 0;
+                Death = true;
+            }
         }
     }
     private void Attack()
     {
-        Instantiate(FireballAttack, transform.position, FireballAttack.transform.rotation);
+        Instantiate(FireballAttack, new Vector2(transform.position.x, transform.position.y - 1f), FireballAttack.transform.rotation);
     }
     private void AttackArms()
     {
-        Instantiate(FireballAttack, new Vector2 (transform.position.x + 3f, transform.position.y - 3f), FireballAttack.transform.rotation);
-        Instantiate(FireballAttack, new Vector2(transform.position.x - 3f, transform.position.y - 3f), FireballAttack.transform.rotation);
+        Instantiate(FireballAttack, new Vector2 (transform.position.x + 2f, transform.position.y - 2.5f), FireballAttack.transform.rotation);
+        Instantiate(FireballAttack, new Vector2(transform.position.x - 2f, transform.position.y - 2.5f), FireballAttack.transform.rotation);
     }
 }

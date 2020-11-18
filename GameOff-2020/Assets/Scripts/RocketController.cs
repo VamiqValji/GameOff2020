@@ -78,7 +78,7 @@ public class RocketController : MonoBehaviour
         if (collision.gameObject.CompareTag("LeftChecks"))
         {
             transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 1.5f));
-            rb.velocity = new Vector2(rb.velocity.x / 3, rb.velocity.y);
+            rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, 3f), rb.velocity.y);
             rb.position = new Vector2 (RightSideCheckPoint.position.x, rb.position.y);
         }
         if (collision.gameObject.CompareTag("RightChecks"))
