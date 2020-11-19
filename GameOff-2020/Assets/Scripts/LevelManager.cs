@@ -24,6 +24,8 @@ public class LevelManager : MonoBehaviour
     public GameObject StarPrefab;
     public GameObject DemonLeftPrefab;
     public GameObject DemonRightPrefab;
+    public GameObject UnicornLeft;
+    public GameObject UnicornRight;
 
     // Start is called before the first frame update
     void Start()
@@ -83,6 +85,7 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+        // DEMON SPAWN
         if (Player.transform.position.y > 180 && Player.transform.position.y < 270)
         {
             if (Mathf.Round(Player.transform.position.y) % 10 == 0) //  && Player.transform.position.y != 0
@@ -90,6 +93,18 @@ public class LevelManager : MonoBehaviour
                 if (canSpawn == true)
                 {
                     SpawnDemon();
+                    canSpawn = false;
+                }
+            }
+        }
+        // UNICORN SPAWN
+        if (Player.transform.position.y > 360 && Player.transform.position.y < 430)
+        {
+            if (Mathf.Round(Player.transform.position.y) % 5 == 0) //  && Player.transform.position.y != 0
+            {
+                if (canSpawn == true)
+                {
+                    SpawnUnicorn();
                     canSpawn = false;
                 }
             }
@@ -159,6 +174,18 @@ public class LevelManager : MonoBehaviour
         {
             //Debug.Log("bird spawned");
             Instantiate(DemonRightPrefab, new Vector2(-7.5f, Player.transform.position.y + 10 + randNum), transform.rotation);
+        }
+    }
+    public void SpawnUnicorn()
+    {
+        randNum = Random.Range(1, 3);
+        if (randNum == 1)
+        {
+            Instantiate(UnicornLeft, new Vector2(7f, Player.transform.position.y + 10), transform.rotation);
+        }
+        else
+        {
+            Instantiate(UnicornRight, new Vector2(-7f, Player.transform.position.y + 10), transform.rotation);
         }
     }
 }

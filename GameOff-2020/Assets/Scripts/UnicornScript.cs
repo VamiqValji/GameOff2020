@@ -8,15 +8,40 @@ public class UnicornScript : MonoBehaviour
     public float movement = 5f;
     public float MoveBy = 18f;
 
-    // Start is called before the first frame update
+    public int MinSize = 1;
+    public int MaxSize = 6;
+
+    public int MinSpeed = 15;
+    public int MaxSpeed = 25;
+
+    private float randNum;
+    private bool start = true;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        randNum = Random.Range(MinSize, MaxSize);
     }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
+
+        if (start == true)
+        {
+            movement = Random.Range(MinSpeed, MaxSpeed);
+
+            if (transform.localScale.x > 0)
+            {
+                transform.localScale = new Vector3(randNum, randNum, transform.localScale.z);
+            }
+            else
+            {
+                transform.localScale = new Vector3(-randNum, randNum, transform.localScale.z);
+            }
+
+            start = false;
+        }
+
         if (transform.localScale.x > 0)
         {
             //rb.velocity = new Vector2(-birdMovement, rb.velocity.y);

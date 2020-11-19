@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5812623592334237223}
   - component: {fileID: 4777611108447952226}
   - component: {fileID: 4717579883676037579}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: UnicornRight
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -166,6 +166,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movement: 100
   MoveBy: 17
+  MinSize: 1
+  MaxSize: 6
+  MinSpeed: 25
+  MaxSpeed: 100
 --- !u!1 &5812623592566782094
 GameObject:
   m_ObjectHideFlags: 0
@@ -177,7 +181,7 @@ GameObject:
   - component: {fileID: 5812623592566782095}
   - component: {fileID: 5812623592566782093}
   - component: {fileID: 5812623592566782092}
-  m_Layer: 0
+  m_Layer: 14
   m_Name: IndicatorMiddle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
