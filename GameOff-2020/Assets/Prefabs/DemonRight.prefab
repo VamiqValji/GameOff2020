@@ -167,4 +167,4 @@ MonoBehaviour:
     type: 3}
   FireballRight: {fileID: 6173778010920894145, guid: b04ef451364d2df4b8b4733ca26795f0,
     type: 3}
-  WaitingTime: 3
+  WaitingTime: 4

@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class CloudScript : MonoBehaviour
 {
-    public Transform player;
     public Rigidbody2D rb;
     public float cloudMovement = 75f;
 

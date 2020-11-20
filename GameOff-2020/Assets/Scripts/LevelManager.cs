@@ -26,6 +26,10 @@ public class LevelManager : MonoBehaviour
     public GameObject DemonRightPrefab;
     public GameObject UnicornLeft;
     public GameObject UnicornRight;
+    public GameObject DemonCloudBig;
+    public GameObject DemonCloudSmall;
+    public GameObject UnicornCloudBig;
+    public GameObject UnicornCloudSmall;
 
     // Start is called before the first frame update
     void Start()
@@ -44,7 +48,14 @@ public class LevelManager : MonoBehaviour
             canSpawn = true;
             Timer = 0;
         }
-
+        // CLOUD SPAWN
+        TimerClouds += Time.deltaTime;
+        if (TimerClouds > WaitingTimeClouds)
+        {
+            CanSpawnClouds = true;
+            CanSpawnStars = true;
+            TimerClouds = 0;
+        }
         // BIRD SPAWN
         if (Player.transform.position.y < 90)
         {
@@ -56,35 +67,8 @@ public class LevelManager : MonoBehaviour
                     canSpawn = false;
                 }
             }
-            // STAR SPAWN
-            if (Mathf.Round(Player.transform.position.y) % 5 == 0 && Player.transform.position.y != 0)
-            {
-                if (CanSpawnStars == true)
-                {
-                    SpawnStars();
-                    CanSpawnStars = false;
-                }
-            }
-            // CLOUD SPAWN
-            TimerClouds += Time.deltaTime;
-            if (TimerClouds > WaitingTimeClouds)
-            {
-                CanSpawnClouds = true;
-                CanSpawnStars = true;
-                TimerClouds = 0;
-            }
-            if (Player.transform.position.y < 70)
-            {
-                if (Mathf.Round(Player.transform.position.y) % 5 == 0 && Player.transform.position.y != 0)
-                {
-                    if (CanSpawnClouds == true)
-                    {
-                        SpawnClouds();
-                        CanSpawnClouds = false;
-                    }
-                }
-            }
         }
+
         // DEMON SPAWN
         if (Player.transform.position.y > 180 && Player.transform.position.y < 270)
         {
@@ -97,6 +81,7 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+
         // UNICORN SPAWN
         if (Player.transform.position.y > 360 && Player.transform.position.y < 430)
         {
@@ -109,6 +94,28 @@ public class LevelManager : MonoBehaviour
                 }
             }
         }
+
+        // CLOUD SPAWN
+        if (Mathf.Round(Player.transform.position.y) % 5 == 0 && Player.transform.position.y != 0)
+        {
+            if (CanSpawnClouds == true)
+            {
+                SpawnClouds(Player.position.y);
+                CanSpawnClouds = false;
+            }
+        }
+
+        // STAR SPAWN
+        if (Mathf.Round(Player.transform.position.y) % 5 == 0 && Player.transform.position.y != 0)
+        {
+            if (CanSpawnStars == true)
+            {
+                SpawnStars();
+                CanSpawnStars = false;
+            }
+        }
+
+
     }
     void FixedUpdate()
     {
@@ -142,16 +149,66 @@ public class LevelManager : MonoBehaviour
             Destroy(Enemies);
         } 
     }
-    public void SpawnClouds()
+    public void SpawnClouds(float playerPos)
     {
-        randNumClouds = Random.Range(1, 3);
-        if (randNumClouds == 1)
+        var prefab = 1;
+        if (playerPos < 180)
         {
-            Instantiate(CloudBig, new Vector2(9, Player.transform.position.y + 7), transform.rotation);
+            prefab = 1;
         }
-        else // randNumClouds
+        else
         {
-            Instantiate(CloudSmall, new Vector2(-9, Player.transform.position.y + 7), transform.rotation);
+            if (playerPos > 180 && playerPos < 360)
+            {
+                prefab = 2;
+            }
+            else
+            {
+                if (playerPos > 360)
+                {
+                    prefab = 3;
+                }
+            }
+        }
+        randNumClouds = Random.Range(1, 3);
+        if (prefab == 1)
+        {
+            if (randNumClouds == 1)
+            {
+                Instantiate(CloudBig, new Vector2(9, Player.transform.position.y + 7), transform.rotation);
+            }
+            else // randNumClouds
+            {
+                Instantiate(CloudSmall, new Vector2(-9, Player.transform.position.y + 7), transform.rotation);
+            }
+        }
+        else
+        {
+            if (prefab == 2)
+            {
+                if (randNumClouds == 1)
+                {
+                    Instantiate(DemonCloudBig, new Vector2(9, Player.transform.position.y + 7), transform.rotation);
+                }
+                else // randNumClouds
+                {
+                    Instantiate(DemonCloudSmall, new Vector2(-9, Player.transform.position.y + 7), transform.rotation);
+                }
+            }
+            else
+            {
+                if (prefab == 3)
+                {
+                    if (randNumClouds == 1)
+                    {
+                        Instantiate(UnicornCloudBig, new Vector2(9, Player.transform.position.y + 7), transform.rotation);
+                    }
+                    else // randNumClouds
+                    {
+                        Instantiate(UnicornCloudSmall, new Vector2(-9, Player.transform.position.y + 7), transform.rotation);
+                    }
+                }
+            }
         }
     }
     public void SpawnStars()
