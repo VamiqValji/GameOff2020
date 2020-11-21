@@ -24,6 +24,8 @@ public class RocketController : MonoBehaviour
     public EffectsPostProcessing PostProcessingScript;
     public int StarPowerUpMultiplier = 15;
 
+    public IsTrigger triggerScript; ///
+
     public ParticleSystem Effect;
     public int EffectAmount = 10;
 
@@ -95,10 +97,13 @@ public class RocketController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Destroy(collision.gameObject);
-        PostProcessingScript.StarPowerUp();
-        StarPowerUp();
-        Effect.Emit(EffectAmount);
+        if (collision.gameObject.layer == 13)
+        {
+            Destroy(collision.gameObject);
+            PostProcessingScript.StarPowerUp();
+            StarPowerUp();
+            Effect.Emit(EffectAmount);
+        }
     }
     public void Die()
     {
@@ -108,9 +113,13 @@ public class RocketController : MonoBehaviour
         LevelManagerScript.PlayerDeath();
         PostProcessingScript.Die();
         StarPowerUpReset();
+
+        triggerScript.Untriggered(); ///
     }
     public void StarPowerUp()
     {
+        triggerScript.Triggered(); ///
+
         transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 1.5f));
         if (rocketForce != DefaultRocketForce * StarPowerUpMultiplier)
         {
@@ -125,5 +134,7 @@ public class RocketController : MonoBehaviour
     {
         rocketForce = DefaultRocketForce;
         RocketParticleAmount = DefaultRocketParticleAmount;
+
+        triggerScript.Untriggered(); ///
     }
 }

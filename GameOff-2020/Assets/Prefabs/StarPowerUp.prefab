@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4010528263294935626}
   - component: {fileID: 4010528263294935621}
   - component: {fileID: 4208293680281239194}
-  m_Layer: 14
+  m_Layer: 13
   m_Name: StarPowerUp
   m_TagString: Enemy
   m_Icon: {fileID: 0}
