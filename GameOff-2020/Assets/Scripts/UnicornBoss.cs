@@ -16,7 +16,9 @@ public class UnicornBoss : MonoBehaviour
     Vector3 start;
     Vector3 end;
 
-    public GameObject Attack;
+    public GameObject RightAttack;
+    public GameObject LeftAttack;
+    public GameObject MiddleAttack;
 
     //public ParticleSystem Middle;
     //public ParticleSystem Right;
@@ -72,7 +74,7 @@ public class UnicornBoss : MonoBehaviour
             }
         }
 
-        if (player.transform.position.y > 345)
+        if (player.transform.position.y > 495)
         {
             if (Death == false)
             {
@@ -84,11 +86,11 @@ public class UnicornBoss : MonoBehaviour
     }
     private void Attack()
     {
-        Instantiate(Attack, new Vector2(transform.position.x, transform.position.y - 1f), FireballAttack.transform.rotation);
+        Instantiate(RightAttack, new Vector2(transform.position.x, transform.position.y - 1f), RightAttack.transform.rotation);
     }
     private void AttackArms()
     {
-        Instantiate(Attack, new Vector2(transform.position.x + 2f, transform.position.y - 2.5f), FireballAttack.transform.rotation);
-        Instantiate(Attack, new Vector2(transform.position.x - 2f, transform.position.y - 2.5f), FireballAttack.transform.rotation);
+        Instantiate(RightAttack, new Vector2(transform.position.x + 2f, transform.position.y - 2.5f), RightAttack.transform.rotation);
+        Instantiate(RightAttack, new Vector2(transform.position.x - 2f, transform.position.y - 2.5f), RightAttack.transform.rotation);
     }
 }

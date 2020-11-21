@@ -83,7 +83,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // UNICORN SPAWN
-        if (Player.transform.position.y > 360 && Player.transform.position.y < 430)
+        if ((Player.transform.position.y > 360 && Player.transform.position.y < 430) || (Player.transform.position.y > 500))
         {
             if (Mathf.Round(Player.transform.position.y) % 5 == 0) //  && Player.transform.position.y != 0
             {
@@ -106,14 +106,27 @@ public class LevelManager : MonoBehaviour
         }
 
         // STAR SPAWN
-        if (Mathf.Round(Player.transform.position.y) % 5 == 0 && Player.transform.position.y != 0)
+
+        if ((Player.transform.position.y < 90 && Player.transform.position.y != 0) || (Player.transform.position.y > 180 && Player.transform.position.y < 270) || (Player.transform.position.y > 350 && Player.transform.position.y < 430) || (Player.transform.position.y > 500))
         {
-            if (CanSpawnStars == true)
+            if (Mathf.Round(Player.transform.position.y) % 5 == 0)
             {
-                SpawnStars();
-                CanSpawnStars = false;
+                if (CanSpawnStars == true)
+                {
+                    SpawnStars();
+                    CanSpawnStars = false;
+                }
             }
         }
+
+        //if (Mathf.Round(Player.transform.position.y) % 5 == 0 && Player.transform.position.y != 0)
+        //{
+        //    if (CanSpawnStars == true)
+        //    {
+        //        SpawnStars();
+        //        CanSpawnStars = false;
+        //    }
+        //}
 
 
     }

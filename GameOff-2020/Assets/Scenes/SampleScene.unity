@@ -31087,7 +31087,7 @@ GameObject:
   - component: {fileID: 1987559928}
   - component: {fileID: 1987559927}
   m_Layer: 14
-  m_Name: IndicatorMiddle
+  m_Name: RainbowParticles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36198,7 +36198,8 @@ GameObject:
   - component: {fileID: 2077510963}
   - component: {fileID: 2077510962}
   - component: {fileID: 2077510961}
-  m_Layer: 0
+  - component: {fileID: 2077510964}
+  m_Layer: 14
   m_Name: UnicornBoss
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36282,13 +36283,36 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2077510960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 430, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children:
   - {fileID: 1987559926}
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2077510964
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2077510960}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 880b012a9557fe948b4cf7fc056532f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1894938782}
+  Distance: 10
+  speed: 1
+  WaitingTime: 3
+  RightAttack: {fileID: 2582157448245407726, guid: 203314cf437aeeb47b6b866e4349729c,
+    type: 3}
+  LeftAttack: {fileID: 3968431267606276847, guid: ef8159453e41ccd46a921ba4eed46d6e,
+    type: 3}
+  MiddleAttack: {fileID: 5037829952028508311, guid: 26a0d6e0b2428c843aa51b5c3f297e4c,
+    type: 3}
+  OnDeath: {fileID: 8003800010392849668, guid: 3c87d7c14e9a5c24e961f0af11ec3464, type: 3}
 --- !u!1 &2100915794
 GameObject:
   m_ObjectHideFlags: 0
