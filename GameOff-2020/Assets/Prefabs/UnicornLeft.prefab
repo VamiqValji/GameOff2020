@@ -4884,6 +4884,7 @@ GameObject:
   - component: {fileID: 2557384219857432797}
   - component: {fileID: 3574251460665914264}
   - component: {fileID: -5443086925136190572}
+  - component: {fileID: -8506870647401798797}
   m_Layer: 14
   m_Name: UnicornLeft
   m_TagString: Enemy
@@ -5040,3 +5041,29 @@ MonoBehaviour:
   MaxSize: 6
   MinSpeed: 25
   MaxSpeed: 100
+--- !u!61 &-8506870647401798797
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2557384219857432785}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1, y: 1}
+    newSize: {x: 0.32, y: 0.32}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1}
+  m_EdgeRadius: 0

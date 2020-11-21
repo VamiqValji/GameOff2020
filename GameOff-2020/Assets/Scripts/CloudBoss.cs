@@ -20,7 +20,7 @@ public class CloudBoss : MonoBehaviour
     public ParticleSystem Rain;
     public GameObject DeathExplosion;
 
-    private bool Death = false;
+    //private bool Death = false;
 
     // Start is called before the first frame update
     void Start()
@@ -51,7 +51,7 @@ public class CloudBoss : MonoBehaviour
         {
             Instantiate(DeathExplosion, transform.position, transform.rotation);
             Destroy(gameObject);
-            Death = true;
+            //Death = true;
         }
     }
     private void Attack()

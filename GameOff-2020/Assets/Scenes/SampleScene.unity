@@ -2667,7 +2667,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 361.071, z: -10}
+  m_LocalPosition: {x: -0.06, y: -0.10899997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14046,7 +14046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079099732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 361.071, z: -10}
+  m_LocalPosition: {x: -0.06, y: -0.10899997, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1135136612}
@@ -30857,7 +30857,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894938775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 360, z: 0}
+  m_LocalPosition: {x: -0.06, y: -1.18, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1111105464}
@@ -30891,6 +30891,8 @@ MonoBehaviour:
   RocketParticleAmount: 5
   PostProcessingScript: {fileID: 219943638}
   StarPowerUpMultiplier: 15
+  triggerDeath: {fileID: 7045821314844041037, guid: a1443310326bebf4a87bb86c326ac939,
+    type: 3}
   Effect: {fileID: 7496938506469548036}
   EffectAmount: 100
 --- !u!1 &1958942843
