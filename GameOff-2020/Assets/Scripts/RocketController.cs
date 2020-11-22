@@ -70,30 +70,7 @@ public class RocketController : MonoBehaviour
             }
         }
     }
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Checks"))
-        {
-            Die();
-        }
-        if (collision.gameObject.CompareTag("LeftChecks"))
-        {
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 1.5f));
-            rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, 3f), rb.velocity.y);
-            rb.position = new Vector2 (RightSideCheckPoint.position.x, rb.position.y);
-        }
-        if (collision.gameObject.CompareTag("RightChecks"))
-        {
-            //transform.rotation = Quaternion.identity;
-            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 3f));
-            rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, 3f), rb.velocity.y);
-            rb.position = new Vector2(LeftSideCheckPoint.position.x, rb.position.y);
-        }
-        if (collision.gameObject.CompareTag("Enemy"))
-        {
-                Die();
-        }
-    }
+
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.layer == 13) // Power Up
@@ -119,6 +96,34 @@ public class RocketController : MonoBehaviour
             //}
         }
     }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Checks"))
+        {
+            Die();
+        }
+        if (collision.gameObject.CompareTag("LeftChecks"))
+        {
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 1.5f));
+            //rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, 1f), rb.velocity.y);
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+            rb.position = new Vector2 (RightSideCheckPoint.position.x, rb.position.y);
+        }
+        if (collision.gameObject.CompareTag("RightChecks"))
+        {
+            //transform.rotation = Quaternion.identity;
+            transform.rotation = Quaternion.Euler(0, 0, Mathf.Lerp(transform.rotation.z, 0, 3f));
+            //rb.velocity = new Vector2(Mathf.Lerp(rb.velocity.x, 0, 1f), rb.velocity.y);
+            rb.velocity = new Vector2(0f, rb.velocity.y);
+            rb.position = new Vector2(LeftSideCheckPoint.position.x, rb.position.y);
+        }
+        if (collision.gameObject.CompareTag("Enemy"))
+        {
+                Die();
+        }
+    }
+
     public void Die()
     {
         rb.position = respawnPoint;

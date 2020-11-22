@@ -83,7 +83,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // UNICORN SPAWN
-        if ((Player.transform.position.y > 360 && Player.transform.position.y < 430) || (Player.transform.position.y > 500))
+        if ((Player.transform.position.y > 360 && Player.transform.position.y < 420) || (Player.transform.position.y > 500))
         {
             if (Mathf.Round(Player.transform.position.y) % 5 == 0) //  && Player.transform.position.y != 0
             {
@@ -107,7 +107,7 @@ public class LevelManager : MonoBehaviour
 
         // STAR SPAWN
 
-        if ((Player.transform.position.y < 90 && Player.transform.position.y != 0) || (Player.transform.position.y > 180 && Player.transform.position.y < 270) || (Player.transform.position.y > 350 && Player.transform.position.y < 430) || (Player.transform.position.y > 500))
+        if ((Player.transform.position.y < 70 && Player.transform.position.y != 0) || (Player.transform.position.y > 180 && Player.transform.position.y < 240) || (Player.transform.position.y > 350 && Player.transform.position.y < 400) || (Player.transform.position.y > 500))
         {
             if (Mathf.Round(Player.transform.position.y) % 5 == 0)
             {

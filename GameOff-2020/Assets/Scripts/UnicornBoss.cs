@@ -66,7 +66,7 @@ public class UnicornBoss : MonoBehaviour
                 }
                 else
                 {
-                    AttackArms();
+                    FollowAttack();
                     smoothFollow = true;
                 }
 
@@ -86,11 +86,18 @@ public class UnicornBoss : MonoBehaviour
     }
     private void Attack()
     {
-        Instantiate(RightAttack, new Vector2(transform.position.x, transform.position.y - 1f), RightAttack.transform.rotation);
+        var randNum = Random.Range(1,3);
+        if (randNum == 1)
+        {
+            Instantiate(RightAttack, new Vector2(-7, player.transform.position.y + 5f), RightAttack.transform.rotation);
+        }
+        else
+        {
+            Instantiate(LeftAttack, new Vector2(7, player.transform.position.y - 5f), LeftAttack.transform.rotation);
+        }
     }
-    private void AttackArms()
+    private void FollowAttack()
     {
-        Instantiate(RightAttack, new Vector2(transform.position.x + 2f, transform.position.y - 2.5f), RightAttack.transform.rotation);
-        Instantiate(RightAttack, new Vector2(transform.position.x - 2f, transform.position.y - 2.5f), RightAttack.transform.rotation);
+        Instantiate(MiddleAttack, new Vector2(transform.position.x, transform.position.y - 1f), MiddleAttack.transform.rotation);
     }
 }

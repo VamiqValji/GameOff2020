@@ -2667,7 +2667,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.10899997, z: -10}
+  m_LocalPosition: {x: -0.06, y: 421.071, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14046,7 +14046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079099732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -0.10899997, z: -10}
+  m_LocalPosition: {x: -0.06, y: 421.071, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1135136612}
@@ -30857,7 +30857,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894938775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: -1.18, z: 0}
+  m_LocalPosition: {x: -0.06, y: 420, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1111105464}
@@ -36284,7 +36284,7 @@ Transform:
   m_GameObject: {fileID: 2077510960}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 430, z: 0}
-  m_LocalScale: {x: 5, y: 5, z: 1}
+  m_LocalScale: {x: 4, y: 4, z: 1}
   m_Children:
   - {fileID: 1987559926}
   m_Father: {fileID: 0}
@@ -36303,9 +36303,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1894938782}
-  Distance: 10
-  speed: 1
-  WaitingTime: 3
+  Distance: 5
+  speed: 2
+  WaitingTime: 1
   RightAttack: {fileID: 2582157448245407726, guid: 203314cf437aeeb47b6b866e4349729c,
     type: 3}
   LeftAttack: {fileID: 3968431267606276847, guid: ef8159453e41ccd46a921ba4eed46d6e,
