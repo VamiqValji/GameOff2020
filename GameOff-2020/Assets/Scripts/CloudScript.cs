@@ -5,12 +5,13 @@ using UnityEngine;
 public class CloudScript : MonoBehaviour
 {
     public Rigidbody2D rb;
-    public float cloudMovement = 75f;
+    public float cloudMovement;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        cloudMovement = Random.Range(40, 80);
     }
 
     // Update is called once per frame

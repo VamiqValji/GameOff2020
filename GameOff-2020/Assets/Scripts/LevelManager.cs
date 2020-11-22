@@ -96,7 +96,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // CLOUD SPAWN
-        if (Mathf.Round(Player.transform.position.y) % 5 == 0 && Player.transform.position.y != 0)
+        if (Mathf.Round(Player.transform.position.y) % 3 == 0 && Player.transform.position.y != 0)
         {
             if (CanSpawnClouds == true)
             {

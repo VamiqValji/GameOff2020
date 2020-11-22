@@ -9,6 +9,7 @@ public class UnicornBoss : MonoBehaviour
     public float speed = 1f;
 
     private float Timer;
+    private float defaultTimer;
     public int WaitingTime = 3;
 
     private bool smoothFollow = true;
@@ -31,7 +32,7 @@ public class UnicornBoss : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        defaultTimer = Timer;
     }
 
     // Update is called once per frame
@@ -59,6 +60,16 @@ public class UnicornBoss : MonoBehaviour
             Timer += Time.deltaTime;
             if (Timer > WaitingTime)
             {
+
+                if (player.transform.position.y > 450)
+                {
+                    Timer = Timer * 1/3;
+                }
+                else
+                {
+                    Timer = defaultTimer;
+                }
+
                 if (smoothFollow == true)
                 {
                     Attack();
