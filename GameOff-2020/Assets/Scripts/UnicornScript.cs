@@ -57,11 +57,11 @@ public class UnicornScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("LeftChecks"))
         {
-            rb.position = new Vector2(rb.position.x + MoveBy, rb.position.y);
+            rb.position = new Vector2(rb.position.x + (MoveBy - (transform.localScale.x / 1.5f)), rb.position.y);
         }
         if (collision.gameObject.CompareTag("RightChecks"))
         {
-            rb.position = new Vector2(rb.position.x - MoveBy, rb.position.y);
+            rb.position = new Vector2(rb.position.x - (MoveBy - (transform.localScale.x / 1.5f)), rb.position.y);
         }
     }
 }

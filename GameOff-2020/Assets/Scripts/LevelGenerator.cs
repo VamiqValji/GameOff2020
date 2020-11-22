@@ -8,7 +8,7 @@ public class LevelGenerator : MonoBehaviour
     public GameObject Level;
     public Transform player;
 
-    private GameObject[] LevelList;
+    //private GameObject[] LevelList;
 
     private float count;
 
@@ -33,11 +33,11 @@ public class LevelGenerator : MonoBehaviour
         {
             if (count < 1)
             {
-                Instantiate(Level, new Vector2(14.02219f, 656.6959f + (count * 108.15591f)), Level.transform.rotation);
+                Instantiate(Level, new Vector2(14.02219f, 656.71f + (count * 108.15591f)), Level.transform.rotation);
             }
             else
             {
-                Instantiate(Level, new Vector2(14.02219f, 656.6959f + (count * 108.1f)), Level.transform.rotation);
+                Instantiate(Level, new Vector2(14.02219f, 656.6959f + (count * 108.02f)), Level.transform.rotation);
             }
             count += 1f;
         }
@@ -47,12 +47,11 @@ public class LevelGenerator : MonoBehaviour
         {
             count = 0f;
 
-            Enemy = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject Enemies in Enemy)
-            {
-                Destroy(Enemies);
-            }
-
+            //LevelList = GameObject.FindGameObjectsWithTag("Levels");
+            //foreach (GameObject Levels in LevelList)
+            //{
+            //    Destroy(Levels);
+            //}
         }
     }
 }

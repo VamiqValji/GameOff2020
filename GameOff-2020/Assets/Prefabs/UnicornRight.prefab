@@ -168,7 +168,7 @@ MonoBehaviour:
   movement: 100
   MoveBy: 17
   MinSize: 1
-  MaxSize: 5
+  MaxSize: 6
   MinSpeed: 25
   MaxSpeed: 100
 --- !u!61 &4435830753058249550
