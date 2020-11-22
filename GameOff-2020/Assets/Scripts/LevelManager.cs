@@ -83,17 +83,17 @@ public class LevelManager : MonoBehaviour
         }
 
         // UNICORN SPAWN
-        if ((Player.transform.position.y > 360 && Player.transform.position.y < 420) || (Player.transform.position.y > 500))
-        {
-            if (Mathf.Round(Player.transform.position.y) % 5 == 0) //  && Player.transform.position.y != 0
-            {
-                if (canSpawn == true)
-                {
-                    SpawnUnicorn();
-                    canSpawn = false;
-                }
-            }
-        }
+        //if ((Player.transform.position.y > 360 && Player.transform.position.y < 420) || (Player.transform.position.y > 500))
+        //{
+        //    if (Mathf.Round(Player.transform.position.y) % 5 == 0) //  && Player.transform.position.y != 0
+        //    {
+        //        if (canSpawn == true)
+        //        {
+        //            SpawnUnicorn();
+        //            canSpawn = false;
+        //        }
+        //    }
+        //}
 
         // CLOUD SPAWN
         if (Mathf.Round(Player.transform.position.y) % 3 == 0 && Player.transform.position.y != 0)
