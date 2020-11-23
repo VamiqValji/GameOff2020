@@ -196,6 +196,7 @@ MonoBehaviour:
   deathExplosion: {fileID: 5633049858034719788, guid: 3a4af5c8c1f26e74dafd0d83000c517a,
     type: 3}
   WaitingTime: 2
+  InfiniteWaitingTime: 4
 --- !u!1 &5708046139605853308
 GameObject:
   m_ObjectHideFlags: 0

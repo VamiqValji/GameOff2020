@@ -5000,7 +5000,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.91, y: 0.93}
+  m_Size: {x: 0.85, y: 0.9}
   m_EdgeRadius: 0
 --- !u!50 &3574251460665914264
 Rigidbody2D:
@@ -5038,7 +5038,7 @@ MonoBehaviour:
   movement: 100
   MoveBy: 17
   MinSize: 1
-  MaxSize: 6
+  MaxSize: 5
   MinSpeed: 25
   MaxSpeed: 100
 --- !u!61 &-8506870647401798797

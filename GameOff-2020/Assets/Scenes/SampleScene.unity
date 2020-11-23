@@ -2667,7 +2667,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 489.071, z: -10}
+  m_LocalPosition: {x: -0.06, y: 191.071, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -14046,7 +14046,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1079099732}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 489.071, z: -10}
+  m_LocalPosition: {x: -0.06, y: 191.071, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1135136612}
@@ -30902,7 +30902,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1894938775}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.06, y: 488, z: 0}
+  m_LocalPosition: {x: -0.06, y: 190, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1111105464}
@@ -36047,6 +36047,12 @@ MonoBehaviour:
   UnicornCloudBig: {fileID: 8819344611940578165, guid: 66f57549fc9e406428489e77347cfc2b,
     type: 3}
   UnicornCloudSmall: {fileID: 1080909658742260548, guid: 5df0f8c956b6d4a40aa517c8e1583556,
+    type: 3}
+  RightRainbowAttack: {fileID: 2582157448245407726, guid: 203314cf437aeeb47b6b866e4349729c,
+    type: 3}
+  LeftRainbowAttack: {fileID: 3968431267606276847, guid: ef8159453e41ccd46a921ba4eed46d6e,
+    type: 3}
+  HomingRainbowAttack: {fileID: 5037829952028508311, guid: 26a0d6e0b2428c843aa51b5c3f297e4c,
     type: 3}
 --- !u!4 &2010157871
 Transform:

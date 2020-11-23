@@ -30,6 +30,9 @@ public class LevelManager : MonoBehaviour
     public GameObject DemonCloudSmall;
     public GameObject UnicornCloudBig;
     public GameObject UnicornCloudSmall;
+    public GameObject RightRainbowAttack;
+    public GameObject LeftRainbowAttack;
+    public GameObject HomingRainbowAttack;
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +75,7 @@ public class LevelManager : MonoBehaviour
         // DEMON SPAWN
         if (Player.transform.position.y > 180 && Player.transform.position.y < 270)
         {
-            if (Mathf.Round(Player.transform.position.y) % 10 == 0) //  && Player.transform.position.y != 0
+            if (Mathf.Round(Player.transform.position.y) % 8 == 0) //  && Player.transform.position.y != 0
             {
                 if (canSpawn == true)
                 {
@@ -90,6 +93,12 @@ public class LevelManager : MonoBehaviour
                 if (canSpawn == true)
                 {
                     SpawnUnicorn();
+                    Debug.Log("SPawned");
+                    if (Player.transform.position.y > 500)
+                    {
+                        SpawnRainbow();
+                        SpawnHomingRainbow();
+                    }
                     canSpawn = false;
                 }
             }
@@ -106,7 +115,6 @@ public class LevelManager : MonoBehaviour
         }
 
         // STAR SPAWN
-
         if ((Player.transform.position.y < 70 && Player.transform.position.y != 0) || (Player.transform.position.y > 180 && Player.transform.position.y < 240) || (Player.transform.position.y > 350 && Player.transform.position.y < 400) || (Player.transform.position.y > 500))
         {
             if (Mathf.Round(Player.transform.position.y) % 5 == 0)
@@ -238,12 +246,12 @@ public class LevelManager : MonoBehaviour
         randNum = Random.Range(1, 3);
         if (randNum == 1)
         {
-            Instantiate(DemonLeftPrefab, new Vector2(7.5f, Player.transform.position.y + 10 - randNum), transform.rotation);
+            Instantiate(DemonLeftPrefab, new Vector2(7.5f, Player.transform.position.y + 10 + (randNum / 2)), transform.rotation);
         }
         else // randNum
         {
             //Debug.Log("bird spawned");
-            Instantiate(DemonRightPrefab, new Vector2(-7.5f, Player.transform.position.y + 10 + randNum), transform.rotation);
+            Instantiate(DemonRightPrefab, new Vector2(-7.5f, Player.transform.position.y + 10 - (randNum / 2)), transform.rotation);
         }
     }
     public void SpawnUnicorn()
@@ -251,11 +259,52 @@ public class LevelManager : MonoBehaviour
         randNum = Random.Range(1, 3);
         if (randNum == 1)
         {
-            Instantiate(UnicornLeft, new Vector2(7f, Player.transform.position.y + 10), transform.rotation);
+            Instantiate(UnicornLeft, new Vector2(7f, Player.transform.position.y + 10), UnicornLeft.transform.rotation);
         }
         else
         {
-            Instantiate(UnicornRight, new Vector2(-7f, Player.transform.position.y + 10), transform.rotation);
+            Instantiate(UnicornRight, new Vector2(-7f, Player.transform.position.y + 10), UnicornRight.transform.rotation);
         }
+    }
+    public void SpawnRainbow()
+    {
+        var willSpawn = Random.Range(1, 3);
+
+        if (willSpawn == 1)
+        {
+            randNum = Random.Range(1, 3);
+            if (randNum == 1)
+            {
+                Instantiate(LeftRainbowAttack, new Vector2(7f, Player.transform.position.y + 10), LeftRainbowAttack.transform.rotation);
+            }
+            else
+            {
+                Instantiate(RightRainbowAttack, new Vector2(-7f, Player.transform.position.y + 10), RightRainbowAttack.transform.rotation);
+            }
+            // else don't spawn.
+        }
+    }
+    public void SpawnHomingRainbow()
+    {
+        var willSpawn = Random.Range(1, 3);
+
+        if (willSpawn == 1)
+        {
+            randNum = Random.Range(1, 4);
+            if (randNum == 1)
+            {
+                Instantiate(HomingRainbowAttack, new Vector2(7f, Player.transform.position.y + 10), HomingRainbowAttack.transform.rotation);
+            }
+            else if (randNum == 2)  
+            {
+                Instantiate(HomingRainbowAttack, new Vector2(7f, Player.transform.position.y + 10), HomingRainbowAttack.transform.rotation);
+                Instantiate(HomingRainbowAttack, new Vector2(-7f, Player.transform.position.y + 10), HomingRainbowAttack.transform.rotation);
+            }
+            else
+            {
+                Instantiate(HomingRainbowAttack, new Vector2(-7f, Player.transform.position.y + 10), HomingRainbowAttack.transform.rotation);
+            }
+        }
+        // else don't spawn.
     }
 }

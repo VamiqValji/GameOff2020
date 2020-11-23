@@ -16,11 +16,18 @@ public class Homing : MonoBehaviour
     private float Timer;
     public float WaitingTime = 3f;
 
+    public float InfiniteWaitingTime = 4f;
+
     // Start is called before the first frame update
     void Start()
     {
         target = GameObject.FindGameObjectWithTag("Player").transform;
         rb = GetComponent<Rigidbody2D>();
+
+        if (transform.position.y > 500)
+        {
+            WaitingTime = InfiniteWaitingTime;
+        }
     }
 
     void Update()
