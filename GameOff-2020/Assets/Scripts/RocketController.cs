@@ -33,6 +33,12 @@ public class RocketController : MonoBehaviour
     private float defaultPitch = 1f;
     public float starPitch = 1f;
 
+    //RespawnTimer
+    public float respawnWaitingTime = 0.10f;
+    public float respawnTimer;
+    private bool respawn = false;
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -45,33 +51,44 @@ public class RocketController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        if (respawn == true)
+        {
+            respawnTimer += Time.deltaTime;
+            if (respawnTimer > respawnWaitingTime)
+            {
+                respawn = false;
+                respawnTimer = 0;
+            }
+        }
     }
     public void FixedUpdate()
     {
-        movementX = -(Input.GetAxis("Horizontal"));
-        if ((Input.GetButton("Horizontal") == true) & (movementX != 0))
+        if (respawn == false)
         {
-            ParticleSystem.Emit(RocketParticleAmount);
-            rb.AddForce(transform.up * rocketForce);
-            transform.Rotate(0.0f, 0.0f, rocketRotation * movementX * Time.deltaTime, Space.Self);
-            // MAX OUT VELOCITY
-            if (rb.velocity.y > maxYVelocity)
+            movementX = -(Input.GetAxis("Horizontal"));
+            if ((Input.GetButton("Horizontal") == true) & (movementX != 0))
             {
-                rb.velocity = new Vector2(rb.velocity.x, maxYVelocity);
-            }
-            if (rb.velocity.x > maxXVelocity)
-            {
-                rb.velocity = new Vector2(maxXVelocity, rb.velocity.y);
-            }
-            if (rb.velocity.x < -maxXVelocity)
-            {
-                rb.velocity = new Vector2(-maxXVelocity, rb.velocity.y);
-            }
-            if (rb.velocity.x != 0f)
-            {
-                //rb.velocity = new Vector2(-movementX * 5, rb.velocity.y);
-                rb.AddForce(transform.right * movementX * 1.5f);
+                ParticleSystem.Emit(RocketParticleAmount);
+                rb.AddForce(transform.up * rocketForce);
+                transform.Rotate(0.0f, 0.0f, rocketRotation * movementX * Time.deltaTime, Space.Self);
+                // MAX OUT VELOCITY
+                if (rb.velocity.y > maxYVelocity)
+                {
+                    rb.velocity = new Vector2(rb.velocity.x, maxYVelocity);
+                }
+                if (rb.velocity.x > maxXVelocity)
+                {
+                    rb.velocity = new Vector2(maxXVelocity, rb.velocity.y);
+                }
+                if (rb.velocity.x < -maxXVelocity)
+                {
+                    rb.velocity = new Vector2(-maxXVelocity, rb.velocity.y);
+                }
+                if (rb.velocity.x != 0f)
+                {
+                    //rb.velocity = new Vector2(-movementX * 5, rb.velocity.y);
+                    rb.AddForce(transform.right * movementX * 1.5f);
+                }
             }
         }
     }
@@ -137,6 +154,7 @@ public class RocketController : MonoBehaviour
 
     public void Die()
     {
+        respawn = true;
         rb.position = respawnPoint;
         rb.rotation = 0f;
         rb.velocity = new Vector3(0, 0, 0);
