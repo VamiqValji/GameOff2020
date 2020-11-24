@@ -151,6 +151,7 @@ public class LevelManager : MonoBehaviour
     }
     public void SpawnBird()
     {
+        FindObjectOfType<AudioManager>().Play("PlayerDeath");
         randNum = Random.Range(1, 3);
         if (randNum == 1)
         {

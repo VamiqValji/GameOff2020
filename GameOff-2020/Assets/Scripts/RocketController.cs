@@ -24,9 +24,9 @@ public class RocketController : MonoBehaviour
     public EffectsPostProcessing PostProcessingScript;
     public int StarPowerUpMultiplier = 15;
     public GameObject triggerDeath;
-
     public ParticleSystem Effect;
     public int EffectAmount = 10;
+    public AudioManager AudioManager;
 
     // Start is called before the first frame update
     void Start()
@@ -137,6 +137,8 @@ public class RocketController : MonoBehaviour
         LevelManagerScript.PlayerDeath();
         PostProcessingScript.Die();
         StarPowerUpReset();
+        //AudioManager.Play("PlayerDeath");
+        // FindObjectOfType<AudioManager>().Play("PlayerDeath");
     }
     public void StarPowerUp()
     {
@@ -149,6 +151,7 @@ public class RocketController : MonoBehaviour
         {
             RocketParticleAmount = RocketParticleAmount * (StarPowerUpMultiplier / 5);
         }
+        //AudioManager.Play("StarPickup");
     }
     public void StarPowerUpReset()
     {
