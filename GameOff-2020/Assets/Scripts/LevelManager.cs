@@ -93,7 +93,6 @@ public class LevelManager : MonoBehaviour
                 if (canSpawn == true)
                 {
                     SpawnUnicorn();
-                    Debug.Log("SPawned");
                     if (Player.transform.position.y > 500)
                     {
                         SpawnRainbow();
@@ -136,7 +135,6 @@ public class LevelManager : MonoBehaviour
         //    }
         //}
 
-
     }
     void FixedUpdate()
     {
@@ -151,7 +149,6 @@ public class LevelManager : MonoBehaviour
     }
     public void SpawnBird()
     {
-        FindObjectOfType<AudioManager>().Play("PlayerDeath");
         randNum = Random.Range(1, 3);
         if (randNum == 1)
         {
@@ -238,7 +235,6 @@ public class LevelManager : MonoBehaviour
         randNumStars = Random.Range(6, 8); //DEBUG MODE: 6, 8 // REGULAR: 1, 10
         if (randNumStars == 7)
         {
-            Debug.Log("Star spawned!");
             Instantiate(StarPrefab, new Vector2(Random.Range(-8, 8), Player.transform.position.y + 7), transform.rotation);
         }
     }

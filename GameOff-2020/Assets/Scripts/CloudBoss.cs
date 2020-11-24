@@ -20,6 +20,8 @@ public class CloudBoss : MonoBehaviour
     public ParticleSystem Rain;
     public GameObject DeathExplosion;
 
+    public GameObject DeathSound;
+
     //private bool Death = false;
 
     // Start is called before the first frame update
@@ -50,6 +52,7 @@ public class CloudBoss : MonoBehaviour
         if (player.transform.position.y > 165)
         {
             Instantiate(DeathExplosion, transform.position, transform.rotation);
+            Instantiate(DeathSound, transform.position, transform.rotation); // Death Sound
             Destroy(gameObject);
             //Death = true;
         }

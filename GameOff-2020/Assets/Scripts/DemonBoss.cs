@@ -24,6 +24,8 @@ public class DemonBoss : MonoBehaviour
 
     public GameObject OnDeath;
 
+    public GameObject DeathSound;
+
     private bool Death = false;
 
     // Start is called before the first frame update
@@ -77,6 +79,7 @@ public class DemonBoss : MonoBehaviour
             if (Death == false)
             {
                 Instantiate(OnDeath, transform.position, transform.rotation);
+                Instantiate(DeathSound, transform.position, transform.rotation); // Death Sound
                 Destroy(gameObject);
                 Death = true;
             }

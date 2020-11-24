@@ -26,7 +26,9 @@ public class RocketController : MonoBehaviour
     public GameObject triggerDeath;
     public ParticleSystem Effect;
     public int EffectAmount = 10;
-    public AudioManager AudioManager;
+    public GameObject EnemyDeathSound;
+    public GameObject PlayerDeathSound;
+    public GameObject StarPickup;
 
     // Start is called before the first frame update
     void Start()
@@ -116,11 +118,12 @@ public class RocketController : MonoBehaviour
         {
             if (rocketForce != DefaultRocketForce) // Star power up active
             {
+                Destroy(collision.gameObject);
                 Instantiate(triggerDeath, transform.position, triggerDeath.gameObject.transform.rotation);
                 //collision.attachedRigidbody.constraints = RigidbodyConstraints2D.None;
                 //collision.gameObject.layer = 11;
                 //Effect.Emit(EffectAmount / 3);
-                Destroy(collision.gameObject);
+                Instantiate(EnemyDeathSound, transform.position, transform.rotation);
             }
             //else // Star power NOT up active
             //{
@@ -137,8 +140,7 @@ public class RocketController : MonoBehaviour
         LevelManagerScript.PlayerDeath();
         PostProcessingScript.Die();
         StarPowerUpReset();
-        //AudioManager.Play("PlayerDeath");
-        // FindObjectOfType<AudioManager>().Play("PlayerDeath");
+        Instantiate(PlayerDeathSound, transform.position, transform.rotation);
     }
     public void StarPowerUp()
     {
@@ -151,7 +153,7 @@ public class RocketController : MonoBehaviour
         {
             RocketParticleAmount = RocketParticleAmount * (StarPowerUpMultiplier / 5);
         }
-        //AudioManager.Play("StarPickup");
+        Instantiate(StarPickup, transform.position, transform.rotation);
     }
     public void StarPowerUpReset()
     {
