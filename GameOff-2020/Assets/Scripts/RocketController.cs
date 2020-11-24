@@ -29,6 +29,9 @@ public class RocketController : MonoBehaviour
     public GameObject EnemyDeathSound;
     public GameObject PlayerDeathSound;
     public GameObject StarPickup;
+    public AudioSource BillySoundTrack;
+    private float defaultPitch = 1f;
+    public float starPitch = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -154,10 +157,12 @@ public class RocketController : MonoBehaviour
             RocketParticleAmount = RocketParticleAmount * (StarPowerUpMultiplier / 5);
         }
         Instantiate(StarPickup, transform.position, transform.rotation);
+        BillySoundTrack.pitch = Mathf.Lerp(BillySoundTrack.pitch, starPitch, 3f * Time.deltaTime);
     }
     public void StarPowerUpReset()
     {
         rocketForce = DefaultRocketForce;
         RocketParticleAmount = DefaultRocketParticleAmount;
+        BillySoundTrack.pitch = Mathf.Lerp(BillySoundTrack.pitch, defaultPitch, 3f * Time.deltaTime);
     }
 }
