@@ -15,7 +15,8 @@ public class RocketSoundController : MonoBehaviour
         {
             if (inGame == false)
             {
-                Instantiate(RocketSound, transform.position, transform.rotation);
+                //Instantiate(RocketSound, transform.position, transform.rotation);
+                RocketSound.SetActive(true);
                 inGame = true;
             }
         }
@@ -23,7 +24,8 @@ public class RocketSoundController : MonoBehaviour
         {
             if (inGame == true)
             {
-                Destroy(GameObject.FindGameObjectWithTag("RocketSound"));
+                //Destroy(GameObject.FindGameObjectWithTag("RocketSound"));
+                RocketSound.SetActive(false);
                 inGame = false;
             }
         }
