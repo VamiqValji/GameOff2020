@@ -8,6 +8,8 @@ public class MainMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
 
+    public float Pvolume;
+
     // MAIN MENU
 
     public void PlayGame ()
@@ -27,5 +29,6 @@ public class MainMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("Volume", volume);
+        Pvolume = volume;
     }
 }

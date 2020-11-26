@@ -31,6 +31,6 @@ public class Highscore : MonoBehaviour
         {
             highscore = score;
         }
-        highscoreText.text = (highscore * 10).ToString("0");
+        highscoreText.text = ("High Score: " + (highscore * 10).ToString("0"));
     }
 }

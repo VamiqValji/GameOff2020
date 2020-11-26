@@ -12,13 +12,7 @@ public class PauseMenu : MonoBehaviour
 
     public AudioMixer audioMixer;
 
-    private bool volumeBool;
-
-    public SpriteRenderer volumeSprite;
-
-    public Sprite volumeOn;
-
-    public Sprite volumeOff;
+    private float previousVolume;
 
     // Start is called before the first frame update
     void Start()
@@ -77,20 +71,14 @@ public class PauseMenu : MonoBehaviour
         Application.Quit();
     }
 
-    public void Volume()
+    public void VolumeOn()
     {
-        if (volumeBool == false)
-        {
-            volumeSprite.sprite = volumeOn;
-            audioMixer.SetFloat("Volume", 0f);
-            volumeBool = true;
-        }
-        else
-        {
-            volumeSprite.sprite = volumeOff;
-            audioMixer.SetFloat("Volume", -80f);
-            volumeBool = false;
-        }
+        audioMixer.SetFloat("Volume", previousVolume);
     }
 
+    public void VolumeOff()
+    {
+        audioMixer.GetFloat("Volume", out previousVolume);
+        audioMixer.SetFloat("Volume", -80f);
+    }
 }

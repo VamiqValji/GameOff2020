@@ -12,6 +12,7 @@ TagManager:
   - CloudBoss
   - Demon
   - RocketSound
+  - Soundtrack
   layers:
   - Default
   - TransparentFX
