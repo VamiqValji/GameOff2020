@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,10 +10,23 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
 
+    public AudioMixer audioMixer;
+
+    private bool volumeBool;
+
+    public SpriteRenderer volumeSprite;
+
+    public Sprite volumeOn;
+
+    public Sprite volumeOff;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        //if (audioMixer.GetFloat("Volume"))
+        //{
+
+        //}
     }
 
     // Update is called once per frame
@@ -20,14 +34,19 @@ public class PauseMenu : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (IsPaused == true)
-            {
-                Resume();
-            }
-            else
-            {
-                Pause();
-            }
+            CheckIsPausedResume();
+        }
+    }
+
+    public void CheckIsPausedResume()
+    {
+        if (IsPaused == true)
+        {
+            Resume();
+        }
+        else
+        {
+            Pause();
         }
     }
 
@@ -56,6 +75,22 @@ public class PauseMenu : MonoBehaviour
     {
         Debug.Log("Will quit but not in Unity editor");
         Application.Quit();
+    }
+
+    public void Volume()
+    {
+        if (volumeBool == false)
+        {
+            volumeSprite.sprite = volumeOn;
+            audioMixer.SetFloat("Volume", 0f);
+            volumeBool = true;
+        }
+        else
+        {
+            volumeSprite.sprite = volumeOff;
+            audioMixer.SetFloat("Volume", -80f);
+            volumeBool = false;
+        }
     }
 
 }
