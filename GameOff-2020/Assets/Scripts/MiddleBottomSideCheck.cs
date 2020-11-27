@@ -10,6 +10,9 @@ public class MiddleBottomSideCheck : MonoBehaviour
     public Transform player;
     public Transform bottomSideCheck;
     public Vector3 respawnPoint;
+    public Transform particleObject;
+    //public ParticleSystem Particles;
+    public float particlesAboveSpeed = 20f;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,7 @@ public class MiddleBottomSideCheck : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
+        particleObject.transform.position = Vector2.Lerp(new Vector2(particleObject.transform.position.x, particleObject.transform.position.y) , new Vector2(player.position.x, player.position.y + distance + 2f), particlesAboveSpeed);
         score = player.position.y;
         if (score < 0)
         {
