@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Cinemachine;
 
 public class RocketController : MonoBehaviour
 {
@@ -38,6 +39,17 @@ public class RocketController : MonoBehaviour
     public float respawnTimer;
     private bool respawn = false;
 
+    // Cinemachine
+
+    public CinemachineVirtualCamera cvc;
+    private CinemachineBasicMultiChannelPerlin cbmcp;
+    public float shakeTimer = 2f;
+    public float shakeIntensity = 1f;
+    //public CinemachineBasicMultiChannelPerlin cinemachineBCP;
+
+    
+
+  
 
     // Start is called before the first frame update
     void Start()
@@ -46,6 +58,8 @@ public class RocketController : MonoBehaviour
         respawnPoint = rb.position;
         DefaultRocketForce = rocketForce;
         DefaultRocketParticleAmount = RocketParticleAmount;
+        cbmcp = cvc.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        cbmcp.m_AmplitudeGain = 0f;
     }
 
     // Update is called once per frame
@@ -90,6 +104,27 @@ public class RocketController : MonoBehaviour
                     rb.AddForce(transform.right * movementX * 1.5f);
                 }
             }
+        }
+
+        // CM Machine Shake
+
+        if (movementX != 0f)
+        {
+            //cbmcp.m_AmplitudeGain = Mathf.Lerp(cbmcp.m_AmplitudeGain, shakeIntensity, shakeTimer);
+            if (rocketForce == DefaultRocketForce) // star powerup active
+            {
+                cbmcp.m_AmplitudeGain = Mathf.Lerp(cbmcp.m_AmplitudeGain, shakeIntensity * 1.5f, shakeTimer);
+                //cbmcp.m_AmplitudeGain = shakeIntensity;
+            }
+            else
+            {
+                cbmcp.m_AmplitudeGain = shakeIntensity * 1.5f;
+            }
+        }
+        else if (cbmcp.m_AmplitudeGain != 0f)
+        {
+            cbmcp.m_AmplitudeGain = Mathf.Lerp(cbmcp.m_AmplitudeGain, 0f, shakeTimer * 2);
+            //cbmcp.m_AmplitudeGain = 0f;
         }
     }
 
