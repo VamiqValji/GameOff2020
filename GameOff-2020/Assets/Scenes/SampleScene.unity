@@ -39094,6 +39094,7 @@ MonoBehaviour:
   shakeIntensity: 0.7
   controlsUI: {fileID: 1906019321}
   speechBubble: {fileID: 1052932732}
+  scoreText: {fileID: 1958942848}
 --- !u!1 &1906019318
 GameObject:
   m_ObjectHideFlags: 0
@@ -39111,7 +39112,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1906019319
 RectTransform:
   m_ObjectHideFlags: 0
@@ -39310,6 +39311,8 @@ GameObject:
   - component: {fileID: 1958942847}
   - component: {fileID: 1958942846}
   - component: {fileID: 1958942845}
+  - component: {fileID: 1958942849}
+  - component: {fileID: 1958942848}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -39393,6 +39396,37 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1958942843}
   m_CullTransparentMesh: 0
+--- !u!95 &1958942848
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958942843}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: dbc47ca99d7b97c459c5d8c248aa2556, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!225 &1958942849
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1958942843}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
+  m_IgnoreParentGroups: 0
 --- !u!1001 &1983568628
 PrefabInstance:
   m_ObjectHideFlags: 0

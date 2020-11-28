@@ -51,6 +51,7 @@ public class RocketController : MonoBehaviour
 
     public Animator controlsUI;
     public Animator speechBubble;
+    public Animator scoreText;
 
     // Start is called before the first frame update
     void Start()
@@ -128,10 +129,12 @@ public class RocketController : MonoBehaviour
         }
 
         // Controls UI
+
         if (transform.position.y < 10)
         {
             controlsUI.SetFloat("PlayerHeight", transform.position.y);
             speechBubble.SetFloat("PlayerHeight", transform.position.y);
+            scoreText.SetFloat("PlayerHeight", transform.position.y);
         }
     }
 
