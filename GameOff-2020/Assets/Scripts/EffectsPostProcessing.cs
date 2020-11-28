@@ -81,6 +81,7 @@ public class EffectsPostProcessing : MonoBehaviour
     public void StarPowerUp()
     {
         StarActive = true;
+        Timer = 0f;
     }
     public void Die()
     {
