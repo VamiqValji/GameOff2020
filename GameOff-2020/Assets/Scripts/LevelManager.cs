@@ -73,7 +73,7 @@ public class LevelManager : MonoBehaviour
         }
 
         // DEMON SPAWN
-        if (Player.transform.position.y > 180 && Player.transform.position.y < 270)
+        if (Player.transform.position.y > 170 && Player.transform.position.y < 270)
         {
             if (Mathf.Round(Player.transform.position.y) % 8 == 0) //  && Player.transform.position.y != 0
             {

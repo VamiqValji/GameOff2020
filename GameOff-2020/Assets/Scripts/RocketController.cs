@@ -35,6 +35,7 @@ public class RocketController : MonoBehaviour
     public float starPitch = 1f;
 
     //RespawnTimer
+
     public float respawnWaitingTime = 0.10f;
     public float respawnTimer;
     private bool respawn = false;
@@ -45,11 +46,6 @@ public class RocketController : MonoBehaviour
     private CinemachineBasicMultiChannelPerlin cbmcp;
     public float shakeTimer = 2f;
     public float shakeIntensity = 1f;
-    //public CinemachineBasicMultiChannelPerlin cinemachineBCP;
-
-    
-
-  
 
     // Start is called before the first frame update
     void Start()
@@ -110,25 +106,49 @@ public class RocketController : MonoBehaviour
 
         if (movementX != 0f)
         {
-            //cbmcp.m_AmplitudeGain = Mathf.Lerp(cbmcp.m_AmplitudeGain, shakeIntensity, shakeTimer);
-            if (rocketForce == DefaultRocketForce) // star powerup active
+            if (rocketForce == DefaultRocketForce) // star powerup NOT active
             {
-                cbmcp.m_AmplitudeGain = Mathf.Lerp(cbmcp.m_AmplitudeGain, shakeIntensity * 1.5f, shakeTimer);
+                cbmcp.m_AmplitudeGain = Mathf.Lerp(cbmcp.m_AmplitudeGain, shakeIntensity, shakeTimer);
                 //cbmcp.m_AmplitudeGain = shakeIntensity;
             }
-            else
+            else // star powerup active
             {
-                cbmcp.m_AmplitudeGain = shakeIntensity * 1.5f;
+                cbmcp.m_AmplitudeGain = Mathf.Lerp(cbmcp.m_AmplitudeGain, shakeIntensity * 1.5f, shakeTimer);
             }
         }
-        else if (cbmcp.m_AmplitudeGain != 0f)
+        else if (cbmcp.m_AmplitudeGain != 0f) // not pressing A or D, and shake not at 0
         {
             cbmcp.m_AmplitudeGain = Mathf.Lerp(cbmcp.m_AmplitudeGain, 0f, shakeTimer * 2);
             //cbmcp.m_AmplitudeGain = 0f;
         }
     }
 
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.layer == 13) // Power Up
+        {
+            Destroy(collision.gameObject);
+            PostProcessingScript.StarPowerUp();
+            StarPowerUp();
+            Effect.Emit(EffectAmount);
+        }
+        if (collision.gameObject.layer == 14) // Enemy
+        {
+            if (rocketForce != DefaultRocketForce) // Star power up active
+            {
+                Destroy(collision.gameObject);
+                Instantiate(triggerDeath, transform.position, triggerDeath.gameObject.transform.rotation);
+                //collision.attachedRigidbody.constraints = RigidbodyConstraints2D.None;
+                //collision.gameObject.layer = 11;
+                //Effect.Emit(EffectAmount / 3);
+                Instantiate(EnemyDeathSound, transform.position, transform.rotation);
+            }
+            //else // Star power NOT up active
+            //{
 
+            //}
+        }
+    }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
@@ -160,33 +180,6 @@ public class RocketController : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
-    {
-        if (collision.gameObject.layer == 13) // Power Up
-        {
-            Destroy(collision.gameObject);
-            PostProcessingScript.StarPowerUp();
-            StarPowerUp();
-            Effect.Emit(EffectAmount);
-        }
-        if (collision.gameObject.layer == 14) // Enemy
-        {
-            if (rocketForce != DefaultRocketForce) // Star power up active
-            {
-                Destroy(collision.gameObject);
-                Instantiate(triggerDeath, transform.position, triggerDeath.gameObject.transform.rotation);
-                //collision.attachedRigidbody.constraints = RigidbodyConstraints2D.None;
-                //collision.gameObject.layer = 11;
-                //Effect.Emit(EffectAmount / 3);
-                Instantiate(EnemyDeathSound, transform.position, transform.rotation);
-            }
-            //else // Star power NOT up active
-            //{
-
-            //}
-        }
-    }
-
     public void Die()
     {
         respawn = true;
@@ -214,7 +207,8 @@ public class RocketController : MonoBehaviour
     }
     public void StarPowerUpReset()
     {
-        rocketForce = DefaultRocketForce;
+        rocketForce = Mathf.Lerp(rocketForce, DefaultRocketForce, 3f);
+        //rocketForce = DefaultRocketForce;
         RocketParticleAmount = DefaultRocketParticleAmount;
         BillySoundTrack.pitch = Mathf.Lerp(BillySoundTrack.pitch, defaultPitch, 3f * Time.deltaTime);
     }

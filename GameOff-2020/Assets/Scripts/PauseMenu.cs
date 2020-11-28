@@ -14,6 +14,8 @@ public class PauseMenu : MonoBehaviour
 
     private float previousVolume;
 
+    public Highscore highscoreScript;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -80,5 +82,10 @@ public class PauseMenu : MonoBehaviour
     {
         audioMixer.GetFloat("Volume", out previousVolume);
         audioMixer.SetFloat("Volume", -80f);
+    }
+
+    public void ResetHighscore()
+    {
+        highscoreScript.ResetHighscore();
     }
 }
