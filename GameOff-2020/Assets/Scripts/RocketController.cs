@@ -47,6 +47,11 @@ public class RocketController : MonoBehaviour
     public float shakeTimer = 2f;
     public float shakeIntensity = 1f;
 
+    // Animator
+
+    public Animator controlsUI;
+    public Animator speechBubble;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -120,6 +125,13 @@ public class RocketController : MonoBehaviour
         {
             cbmcp.m_AmplitudeGain = Mathf.Lerp(cbmcp.m_AmplitudeGain, 0f, shakeTimer * 2);
             //cbmcp.m_AmplitudeGain = 0f;
+        }
+
+        // Controls UI
+        if (transform.position.y < 10)
+        {
+            controlsUI.SetFloat("PlayerHeight", transform.position.y);
+            speechBubble.SetFloat("PlayerHeight", transform.position.y);
         }
     }
 
