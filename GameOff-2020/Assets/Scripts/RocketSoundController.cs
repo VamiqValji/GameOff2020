@@ -7,27 +7,35 @@ public class RocketSoundController : MonoBehaviour
     private float movement;
     private bool inGame = false;
     public GameObject RocketSound;
+    public bool isDead = false;
     
     void Update()
     {
-        movement = Input.GetAxis("Horizontal");
-        if (movement != 0)
+        if (isDead == false)
         {
-            if (inGame == false)
+            movement = Input.GetAxis("Horizontal");
+            if (movement != 0)
             {
-                //Instantiate(RocketSound, transform.position, transform.rotation);
-                RocketSound.SetActive(true);
-                inGame = true;
+                if (inGame == false)
+                {
+                    //Instantiate(RocketSound, transform.position, transform.rotation);
+                    RocketSound.SetActive(true);
+                    inGame = true;
+                }
+            }
+            else
+            {
+                if (inGame == true)
+                {
+                    //Destroy(GameObject.FindGameObjectWithTag("RocketSound"));
+                    RocketSound.SetActive(false);
+                    inGame = false;
+                }
             }
         }
         else
         {
-            if (inGame == true)
-            {
-                //Destroy(GameObject.FindGameObjectWithTag("RocketSound"));
-                RocketSound.SetActive(false);
-                inGame = false;
-            }
+            RocketSound.SetActive(false);
         }
     }
 }

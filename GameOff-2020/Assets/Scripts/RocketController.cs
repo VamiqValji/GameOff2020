@@ -30,15 +30,23 @@ public class RocketController : MonoBehaviour
     public GameObject EnemyDeathSound;
     public GameObject PlayerDeathSound;
     public GameObject StarPickup;
+    public GameObject RespawnSound;
     public AudioSource BillySoundTrack;
     private float defaultPitch = 1f;
     public float starPitch = 1f;
+    private bool canMove = true;
+    public RocketSoundController RSC;
 
     //RespawnTimer
 
     public float respawnWaitingTime = 0.10f;
     public float respawnTimer;
     private bool respawn = false;
+
+    // Respawn Sound Effect Cool Down
+    private float RSWaitingTime = 1f;
+    private float RSTimer;
+    private bool RS = false;
 
     // Cinemachine
 
@@ -52,6 +60,10 @@ public class RocketController : MonoBehaviour
     public Animator controlsUI;
     public Animator speechBubble;
     public Animator scoreText;
+
+    // UI
+
+    public GameObject deathScreen;
 
     // Start is called before the first frame update
     void Start()
@@ -76,10 +88,20 @@ public class RocketController : MonoBehaviour
                 respawnTimer = 0;
             }
         }
+
+        if (RS == false)
+        {
+            RSTimer += Time.deltaTime;
+            if (RSTimer > RSWaitingTime)
+            {
+                respawn = true;
+                RSTimer = 0;
+            }
+        }
     }
     public void FixedUpdate()
     {
-        if (respawn == false)
+        if (respawn == false && canMove == true)
         {
             movementX = -(Input.GetAxis("Horizontal"));
             if ((Input.GetButton("Horizontal") == true) & (movementX != 0))
@@ -197,6 +219,17 @@ public class RocketController : MonoBehaviour
 
     public void Die()
     {
+        Instantiate(PlayerDeathSound, transform.position, transform.rotation);
+        canMove = false;
+        Time.timeScale = 0.5f;
+        Invoke("ActualDie", 1f);
+        deathScreen.SetActive(true);
+        RSC.isDead = true;
+        RS = false;
+    }
+    public void ActualDie()
+    {
+        Time.timeScale = 1f;
         respawn = true;
         rb.position = respawnPoint;
         rb.rotation = 0f;
@@ -204,7 +237,13 @@ public class RocketController : MonoBehaviour
         LevelManagerScript.PlayerDeath();
         PostProcessingScript.Die();
         StarPowerUpReset();
-        Instantiate(PlayerDeathSound, transform.position, transform.rotation);
+        deathScreen.SetActive(false);
+        canMove = true;
+        RSC.isDead = false;
+        if (RS == true)
+        {
+            Instantiate(RespawnSound);
+        }
     }
     public void StarPowerUp()
     {
