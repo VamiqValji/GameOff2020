@@ -30,6 +30,10 @@ public class EffectsPostProcessing : MonoBehaviour
     public int WaitingTime = 7; // Seconds
     private bool StarActive;
 
+    // Rocket Color
+
+    public Animator rocketAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,6 +60,17 @@ public class EffectsPostProcessing : MonoBehaviour
                 PlayerScript.StarPowerUpReset();
                 Timer = 0;
             }
+        }
+
+        // Rocket Color
+
+        if (StarActive == true)
+        {
+            rocketAnimator.SetBool("Active", true);
+        }
+        else
+        {
+            rocketAnimator.SetBool("Active", false);
         }
 
         // CHANGE EFFECTS BASED ON IF POWERUP IS ACTIVE
