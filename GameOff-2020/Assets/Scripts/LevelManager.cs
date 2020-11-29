@@ -240,7 +240,7 @@ public class LevelManager : MonoBehaviour
     }
     public void SpawnDemon()
     {
-        randNum = Random.Range(1, 3);
+        randNum = Random.Range(1, 5);
         if (randNum == 1)
         {
             Instantiate(DemonLeftPrefab, new Vector2(7.5f, Player.transform.position.y + 10 + (randNum / 2)), transform.rotation);

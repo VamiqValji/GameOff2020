@@ -6,16 +6,10 @@ public class DontDestroy : MonoBehaviour
 {
     private void Awake()
     {
-        DontDestroyOnLoad(gameObject);
         if (GameObject.FindGameObjectsWithTag("Soundtrack").Length > 1)
         {
             Destroy(gameObject);
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        //DontDestroyOnLoad(gameObject);
     }
 }

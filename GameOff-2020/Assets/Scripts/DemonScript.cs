@@ -40,6 +40,15 @@ public class DemonScript : MonoBehaviour
         {
             Instantiate(FireballRight, new Vector2(-6, transform.position.y - 0.4f), transform.rotation);
         }
+
+        GameObject[] nearby = GameObject.FindGameObjectsWithTag("Enemy");
+        foreach (GameObject Enemies in nearby)
+        {
+            if (Enemies.transform.position.x > transform.position.y + 7 && Enemies.transform.position.x > transform.position.x + 7)
+            {
+                Destroy(Enemies);
+            }
+        }
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
