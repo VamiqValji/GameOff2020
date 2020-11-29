@@ -226,6 +226,8 @@ public class RocketController : MonoBehaviour
         Invoke("ActualDie", 1f);
         deathScreen.SetActive(true);
         RSC.isDead = true;
+        PostProcessingScript.DeathScreen();
+        cbmcp.m_AmplitudeGain = Mathf.Lerp(cbmcp.m_AmplitudeGain, shakeIntensity * 2f, shakeTimer / 4);
     }
     public void ActualDie()
     {

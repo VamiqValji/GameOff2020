@@ -29,6 +29,7 @@ public class EffectsPostProcessing : MonoBehaviour
     private float Timer;
     public int WaitingTime = 7; // Seconds
     private bool StarActive;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,7 +51,7 @@ public class EffectsPostProcessing : MonoBehaviour
             Timer += Time.deltaTime;
             if (Timer > WaitingTime)
             {
-                Debug.Log(WaitingTime + " second(s) elapsed.");
+                //Debug.Log(WaitingTime + " second(s) elapsed.");
                 StarActive = false;
                 PlayerScript.StarPowerUpReset();
                 Timer = 0;
@@ -89,4 +90,10 @@ public class EffectsPostProcessing : MonoBehaviour
         Chromatic.intensity.value = ChromaticDefault;
         StarActive = false;
     }
+
+    public void DeathScreen()
+    {
+        Vignette.intensity.value = Mathf.Lerp(Vignette.intensity.value, VignetteActive * 1.25f, 0.5f);
+        Chromatic.intensity.value = Mathf.Lerp(Chromatic.intensity.value, ChromaticActive * 1.75f, 0.5f);// start value, end value, over time
+    } 
 }

@@ -17,7 +17,7 @@ public class DeleteAudio : MonoBehaviour
     {
         if (audioSource.isPlaying == false)
         {
-            Debug.Log(audioSource + " destroyed.");
+            //Debug.Log(audioSource + " destroyed.");
             Destroy(gameObject);
         }
     }
