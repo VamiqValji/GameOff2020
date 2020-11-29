@@ -50,6 +50,12 @@ public class RocketController : MonoBehaviour
     private float RRTimer;
     private bool RR = true;
 
+    //Invoke Alternative
+
+    private float InvokeWaitingTime = 1f;
+    private float InvokeTimer;
+    private bool InvokeBool = false;
+
     // Cinemachine
 
     public CinemachineVirtualCamera cvc;
@@ -108,6 +114,17 @@ public class RocketController : MonoBehaviour
             {
                 RR = true;
                 RRTimer = 0;
+            }
+        }
+
+        if (InvokeBool == true)
+        {
+            InvokeTimer += Time.deltaTime;
+            if (InvokeTimer > InvokeWaitingTime)
+            {
+                ActualDie();
+                InvokeBool = false;
+                InvokeTimer = 0;
             }
         }
     }
@@ -175,7 +192,7 @@ public class RocketController : MonoBehaviour
         {
             beatBoss = true;
         }
-        Debug.Log(beatBoss);
+        //Debug.Log(beatBoss);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -240,7 +257,8 @@ public class RocketController : MonoBehaviour
         Instantiate(PlayerDeathSound, transform.position, transform.rotation);
         canMove = false;
         Time.timeScale = 0.5f;
-        Invoke("ActualDie", 1f);
+        //Invoke("ActualDie", 1f);
+        InvokeBool = true;
         deathScreen.SetActive(true);
         RSC.isDead = true;
         PostProcessingScript.DeathScreen();
