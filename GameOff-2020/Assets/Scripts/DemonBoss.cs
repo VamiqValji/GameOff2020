@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DemonBoss : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float Distance = 10f;
     public float speed = 1f;
 
@@ -28,10 +28,13 @@ public class DemonBoss : MonoBehaviour
 
     private bool Death = false;
 
+    private Vector2 respawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
-
+        player = GameObject.FindGameObjectWithTag("Player").transform;
+        respawnPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -83,6 +86,11 @@ public class DemonBoss : MonoBehaviour
                 Destroy(gameObject);
                 Death = true;
             }
+        }
+
+        if (player.transform.position.y < 0)
+        {
+            transform.position = respawnPoint;
         }
     }
     private void Attack()

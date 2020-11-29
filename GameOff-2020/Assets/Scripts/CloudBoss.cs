@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CloudBoss : MonoBehaviour
 {
-    public Transform player;
+    private Transform player;
     public float Distance = 10f;
     //private Vector2 respawnPoint;
     public float speed = 10f;
@@ -24,10 +24,14 @@ public class CloudBoss : MonoBehaviour
 
     //private bool Death = false;
 
+    private Vector2 respawnPoint;
+
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player").transform;
         //respawnPoint = transform.position;
+        respawnPoint = transform.position;
     }
 
     // Update is called once per frame
@@ -55,6 +59,11 @@ public class CloudBoss : MonoBehaviour
             Instantiate(DeathSound, transform.position, transform.rotation); // Death Sound
             Destroy(gameObject);
             //Death = true;
+        }
+
+        if (player.transform.position.y < 0)
+        {
+            transform.position = respawnPoint;
         }
     }
     private void Attack()

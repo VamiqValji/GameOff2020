@@ -14,6 +14,8 @@ TagManager:
   - RocketSound
   - Soundtrack
   - RespawnSoundEffect
+  - DemonBoss
+  - UnicornBoss
   layers:
   - Default
   - TransparentFX

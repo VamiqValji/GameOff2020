@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
-using UnityEngine.SceneManagement;
+//using UnityEngine.SceneManagement;
 
 public class RocketController : MonoBehaviour
 {
@@ -70,6 +70,12 @@ public class RocketController : MonoBehaviour
     // Beat Boss
 
     private bool beatBoss = false;
+
+    // Bosses
+
+    public GameObject cloudBoss;
+    public GameObject demonBoss;
+    public GameObject unicornBoss;
 
     // Start is called before the first frame update
     void Start()
@@ -169,6 +175,7 @@ public class RocketController : MonoBehaviour
         {
             beatBoss = true;
         }
+        Debug.Log(beatBoss);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -241,13 +248,38 @@ public class RocketController : MonoBehaviour
     }
     public void ActualDie()
     {
-        Time.timeScale = 1f;
         if (beatBoss == true)
         {
-            SceneManager.LoadScene(1);
+            if (GameObject.FindGameObjectsWithTag("CloudBoss").Length == 0)
+            {
+                Instantiate(cloudBoss, cloudBoss.transform.position, cloudBoss.transform.rotation);
+            }
+            else if (GameObject.FindGameObjectsWithTag("CloudBoss").Length > 1)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("CloudBoss"));
+            }
+
+            if (GameObject.FindGameObjectsWithTag("DemonBoss").Length == 0)
+            {
+                Instantiate(demonBoss, demonBoss.transform.position, demonBoss.transform.rotation);
+            }
+            else if (GameObject.FindGameObjectsWithTag("DemonBoss").Length > 1)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("DemonBoss"));
+            }
+
+            if (GameObject.FindGameObjectsWithTag("UnicornBoss").Length == 0)
+            {
+                Instantiate(unicornBoss, unicornBoss.transform.position, unicornBoss.transform.rotation);
+            }
+            else if (GameObject.FindGameObjectsWithTag("UnicornBoss").Length > 1)
+            {
+                Destroy(GameObject.FindGameObjectWithTag("UnicornBoss"));
+            }
+            //SceneManager.LoadScene(1);
             beatBoss = false;
         }
-        else if(RR == true)
+        if (RR == true)
         {
             respawn = true;
             rb.position = respawnPoint;
@@ -263,6 +295,7 @@ public class RocketController : MonoBehaviour
             //Destroy(GameObject.FindGameObjectWithTag("RespawnSoundEffect"), 0.8f);
             RR = false;
         }
+        Time.timeScale = 1f;
     }
     public void StarPowerUp()
     {
