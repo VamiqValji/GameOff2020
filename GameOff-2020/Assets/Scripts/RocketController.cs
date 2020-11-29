@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.SceneManagement;
 
 public class RocketController : MonoBehaviour
 {
@@ -65,6 +66,10 @@ public class RocketController : MonoBehaviour
     // UI
 
     public GameObject deathScreen;
+
+    // Beat Boss
+
+    private bool beatBoss = false;
 
     // Start is called before the first frame update
     void Start()
@@ -159,6 +164,11 @@ public class RocketController : MonoBehaviour
             speechBubble.SetFloat("PlayerHeight", transform.position.y);
             scoreText.SetFloat("PlayerHeight", transform.position.y);
         }
+
+        if (transform.position.y > 165)
+        {
+            beatBoss = true;
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -231,9 +241,14 @@ public class RocketController : MonoBehaviour
     }
     public void ActualDie()
     {
-        if (RR == true)
+        Time.timeScale = 1f;
+        if (beatBoss == true)
         {
-            Time.timeScale = 1f;
+            SceneManager.LoadScene(1);
+            beatBoss = false;
+        }
+        else if(RR == true)
+        {
             respawn = true;
             rb.position = respawnPoint;
             rb.rotation = 0f;

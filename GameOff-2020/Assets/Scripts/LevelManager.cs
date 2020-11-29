@@ -232,7 +232,7 @@ public class LevelManager : MonoBehaviour
     }
     public void SpawnStars()
     {
-        randNumStars = Random.Range(6, 8); //DEBUG MODE: 6, 8 // REGULAR: 1, 10
+        randNumStars = Random.Range(5, 8); //DEBUG MODE: 6, 8 // REGULAR: 1, 10
         if (randNumStars == 7)
         {
             Instantiate(StarPrefab, new Vector2(Random.Range(-8, 8), Player.transform.position.y + 7), transform.rotation);
