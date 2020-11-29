@@ -43,6 +43,12 @@ public class RocketController : MonoBehaviour
     public float respawnTimer;
     private bool respawn = false;
 
+    //ResetRespawnTimer
+
+    private float RRWaitingTime = 1f;
+    private float RRTimer;
+    private bool RR = true;
+
     // Cinemachine
 
     public CinemachineVirtualCamera cvc;
@@ -81,6 +87,16 @@ public class RocketController : MonoBehaviour
             {
                 respawn = false;
                 respawnTimer = 0;
+            }
+        }
+
+        if (RR == false)
+        {
+            RRTimer += Time.deltaTime;
+            if (RRTimer > RRWaitingTime)
+            {
+                RR = true;
+                RRTimer = 0;
             }
         }
     }
@@ -213,22 +229,23 @@ public class RocketController : MonoBehaviour
     }
     public void ActualDie()
     {
-        Time.timeScale = 1f;
-        respawn = true;
-        rb.position = respawnPoint;
-        rb.rotation = 0f;
-        rb.velocity = new Vector3(0, 0, 0);
-        LevelManagerScript.PlayerDeath();
-        PostProcessingScript.Die();
-        StarPowerUpReset();
-        deathScreen.SetActive(false);
-        canMove = true;
-        RSC.isDead = false;
-        if (GameObject.FindGameObjectsWithTag("RespawnSoundEffect").Length == 0)
+        if (RR == true)
         {
+            Time.timeScale = 1f;
+            respawn = true;
+            rb.position = respawnPoint;
+            rb.rotation = 0f;
+            rb.velocity = new Vector3(0, 0, 0);
+            LevelManagerScript.PlayerDeath();
+            PostProcessingScript.Die();
+            StarPowerUpReset();
+            deathScreen.SetActive(false);
+            canMove = true;
+            RSC.isDead = false;
             Instantiate(RespawnSound);
+            //Destroy(GameObject.FindGameObjectWithTag("RespawnSoundEffect"), 0.8f);
+            RR = false;
         }
-        Destroy(GameObject.FindGameObjectWithTag("RespawnSoundEffect"), 1f);
     }
     public void StarPowerUp()
     {
