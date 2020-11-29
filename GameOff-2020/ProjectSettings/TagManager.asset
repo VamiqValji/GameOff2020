@@ -13,6 +13,7 @@ TagManager:
   - Demon
   - RocketSound
   - Soundtrack
+  - RespawnSoundEffect
   layers:
   - Default
   - TransparentFX

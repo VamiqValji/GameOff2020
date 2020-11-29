@@ -43,11 +43,6 @@ public class RocketController : MonoBehaviour
     public float respawnTimer;
     private bool respawn = false;
 
-    // Respawn Sound Effect Cool Down
-    private float RSWaitingTime = 1f;
-    private float RSTimer;
-    private bool RS = false;
-
     // Cinemachine
 
     public CinemachineVirtualCamera cvc;
@@ -86,16 +81,6 @@ public class RocketController : MonoBehaviour
             {
                 respawn = false;
                 respawnTimer = 0;
-            }
-        }
-
-        if (RS == false)
-        {
-            RSTimer += Time.deltaTime;
-            if (RSTimer > RSWaitingTime)
-            {
-                respawn = true;
-                RSTimer = 0;
             }
         }
     }
@@ -225,7 +210,6 @@ public class RocketController : MonoBehaviour
         Invoke("ActualDie", 1f);
         deathScreen.SetActive(true);
         RSC.isDead = true;
-        RS = false;
     }
     public void ActualDie()
     {
@@ -240,10 +224,11 @@ public class RocketController : MonoBehaviour
         deathScreen.SetActive(false);
         canMove = true;
         RSC.isDead = false;
-        if (RS == true)
+        if (GameObject.FindGameObjectsWithTag("RespawnSoundEffect").Length == 0)
         {
             Instantiate(RespawnSound);
         }
+        Destroy(GameObject.FindGameObjectWithTag("RespawnSoundEffect"), 1f);
     }
     public void StarPowerUp()
     {

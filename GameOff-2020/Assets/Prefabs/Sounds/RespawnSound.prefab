@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5136999925042568131}
   m_Layer: 0
   m_Name: RespawnSound
-  m_TagString: Untagged
+  m_TagString: RespawnSoundEffect
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -136,7 +136,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884935735790561560}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ac4514657e98ecd40b89513c3b791699, type: 3}
   m_Name: 

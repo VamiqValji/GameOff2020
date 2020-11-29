@@ -492,7 +492,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -16.099976, y: -19.000122}
+  m_AnchoredPosition: {x: -16.099976, y: -19.000092}
   m_SizeDelta: {x: 87.399994, y: 91.899994}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &77939255
@@ -32576,7 +32576,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -16.099976, y: -19.000122}
+  m_AnchoredPosition: {x: -16.099976, y: -19.000092}
   m_SizeDelta: {x: 87.399994, y: 91.899994}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &1414435796
@@ -39676,6 +39676,8 @@ MonoBehaviour:
   PlayerDeathSound: {fileID: 2185637691661021554, guid: ae93d43d148509a4fb205bdc1d4b68b3,
     type: 3}
   StarPickup: {fileID: 8999688855732056157, guid: 5d0310dbaec9df549a7bf68859480997,
+    type: 3}
+  RespawnSound: {fileID: 884935735790561560, guid: e8cdd02abbd527843b842c5e84611fbd,
     type: 3}
   BillySoundTrack: {fileID: 400279367}
   starPitch: 1.5
