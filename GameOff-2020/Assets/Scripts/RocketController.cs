@@ -83,6 +83,15 @@ public class RocketController : MonoBehaviour
     public GameObject demonBoss;
     public GameObject unicornBoss;
 
+    // Billy Easter Egg
+
+    public GameObject BillyAngrySprite;
+    public GameObject BillyHurtSound;
+    public GameObject BillyHurtMessage;
+    private float BillyWaitingTime = 1.25f;
+    private float BillyTimer;
+    private bool BillyEE = false;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -125,6 +134,16 @@ public class RocketController : MonoBehaviour
                 ActualDie();
                 InvokeBool = false;
                 InvokeTimer = 0;
+            }
+        }
+
+        if (BillyEE == true)
+        {
+            BillyTimer += Time.deltaTime;
+            if (BillyTimer > BillyWaitingTime)
+            {
+                BillyEE = false;
+                BillyTimer = 0;
             }
         }
     }
@@ -226,6 +245,13 @@ public class RocketController : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Checks"))
         {
+            if (collision.gameObject.layer == 9 && BillyEE == false)
+            {
+                BillyAngrySprite.SetActive(true);
+                BillyEE = true;
+                Instantiate(BillyHurtSound);
+                Instantiate(BillyHurtMessage);
+            }
             Die();
         }
         if (collision.gameObject.CompareTag("LeftChecks"))
