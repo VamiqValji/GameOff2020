@@ -8,17 +8,19 @@ public class MainMenu : MonoBehaviour
 {
     public AudioMixer audioMixer;
 
+    public GameObject clickSound;
+
     // MAIN MENU
 
     public void PlayGame ()
     {
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         SceneManager.LoadScene(1);
+        Instantiate(clickSound);
     }
 
     public void QuitGame()
     {
-        Debug.Log("Will quit but not in Unity editor");
         Application.Quit();
     }
 
@@ -27,5 +29,10 @@ public class MainMenu : MonoBehaviour
     public void SetVolume(float volume)
     {
         audioMixer.SetFloat("Volume", volume);
+    }
+
+    public void click()
+    {
+        Instantiate(clickSound);
     }
 }

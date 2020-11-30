@@ -16,6 +16,8 @@ public class PauseMenu : MonoBehaviour
 
     public Animator controlsUI;
 
+    public GameObject clickSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -52,6 +54,7 @@ public class PauseMenu : MonoBehaviour
         controlsUI.SetBool("Paused", false);
         Time.timeScale = 1f;
         IsPaused = false;
+        Instantiate(clickSound);
     }
 
     public void Pause ()
@@ -60,6 +63,7 @@ public class PauseMenu : MonoBehaviour
         controlsUI.SetBool("Paused", true);
         Time.timeScale = 0f;
         IsPaused = true;
+        Instantiate(clickSound);
     }
 
     public void Menu()
@@ -67,22 +71,28 @@ public class PauseMenu : MonoBehaviour
         //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
         Time.timeScale = 1f;
         SceneManager.LoadScene(0);
+        Instantiate(clickSound);
     }
 
     public void QuitGame()
     {
-        Debug.Log("Will quit but not in Unity editor");
         Application.Quit();
     }
 
     public void VolumeOn()
     {
         audioMixer.SetFloat("Volume", previousVolume);
+        Instantiate(clickSound);
     }
 
     public void VolumeOff()
     {
         audioMixer.GetFloat("Volume", out previousVolume);
         audioMixer.SetFloat("Volume", -80f);
+    }
+
+    public void click()
+    {
+        Instantiate(clickSound);
     }
 }
