@@ -8,4 +8,4 @@ This was my first public-released game and first game jam, I had a lot of fun!
 
 Thanks for playing!
 
-- Vamiq
+-- Vamiq
