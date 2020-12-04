@@ -92,6 +92,14 @@ public class RocketController : MonoBehaviour
     private float BillyTimer;
     private bool BillyEE = false;
 
+    // Mobile Mode
+
+    public GameObject AndroidGameObject;
+    private bool Android = false;
+    public GameObject AndroidControlsUI;
+    public GameObject ControlsUIGameObject;
+    private Animator AndroidUIAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -101,11 +109,57 @@ public class RocketController : MonoBehaviour
         DefaultRocketParticleAmount = RocketParticleAmount;
         cbmcp = cvc.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
         cbmcp.m_AmplitudeGain = 0f;
+
+        if (AndroidGameObject.activeSelf == true)
+        {
+            Android = true;
+            AndroidControlsUI.SetActive(true);
+            ControlsUIGameObject.SetActive(false);
+            AndroidUIAnimator = AndroidControlsUI.GetComponent<Animator>();
+        }
+        else
+        {
+            Android = false;
+            AndroidControlsUI.SetActive(false);
+            ControlsUIGameObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Touch controls
+
+        if (Android == true)
+        {
+            if (canMove == true)
+            {
+                if (Input.touchCount > 0)
+                {
+                    if (Input.GetTouch(0).position.x > Screen.width / 2)
+                    {
+                        //Debug.Log(Screen.width);
+                        //Debug.Log(Input.GetTouch(0).position.x);
+                        movementX = -1f;
+                        //Debug.Log("right");
+                    }
+                    else if (Input.GetTouch(0).position.x < Screen.width / 2)
+                    {
+                        //Debug.Log(Screen.width);
+                        //Debug.Log(Input.GetTouch(0).position.x);
+                        movementX = 1f;
+                        //Debug.Log("left");
+                    }
+                }
+                else
+                {
+                    movementX = 0f;
+                }
+            }
+        }
+
+        //
+
         if (respawn == true)
         {
             respawnTimer += Time.deltaTime;
@@ -151,29 +205,19 @@ public class RocketController : MonoBehaviour
     {
         if (respawn == false && canMove == true)
         {
-            movementX = -(Input.GetAxis("Horizontal"));
-            if ((Input.GetButton("Horizontal") == true) & (movementX != 0))
+            if (Android == false)
             {
-                ParticleSystem.Emit(RocketParticleAmount);
-                rb.AddForce(transform.up * rocketForce);
-                transform.Rotate(0.0f, 0.0f, rocketRotation * movementX * Time.deltaTime, Space.Self);
-                // MAX OUT VELOCITY
-                if (rb.velocity.y > maxYVelocity)
+                movementX = -(Input.GetAxis("Horizontal")); // DESKTOP
+                if ((Input.GetButton("Horizontal") == true) & (movementX != 0)) // DESKTOP
                 {
-                    rb.velocity = new Vector2(rb.velocity.x, maxYVelocity);
+                    Move();
                 }
-                if (rb.velocity.x > maxXVelocity)
+            }
+            else
+            {
+                if (movementX != 0) // MOBILE
                 {
-                    rb.velocity = new Vector2(maxXVelocity, rb.velocity.y);
-                }
-                if (rb.velocity.x < -maxXVelocity)
-                {
-                    rb.velocity = new Vector2(-maxXVelocity, rb.velocity.y);
-                }
-                if (rb.velocity.x != 0f)
-                {
-                    //rb.velocity = new Vector2(-movementX * 5, rb.velocity.y);
-                    rb.AddForce(transform.right * movementX * 1.5f);
+                    Move();
                 }
             }
         }
@@ -202,7 +246,14 @@ public class RocketController : MonoBehaviour
 
         if (transform.position.y < 10)
         {
-            controlsUI.SetFloat("PlayerHeight", transform.position.y);
+            if (Android == true)
+            {
+                AndroidUIAnimator.SetFloat("PlayerHeight", transform.position.y);
+            }
+            else
+            {
+                controlsUI.SetFloat("PlayerHeight", transform.position.y);
+            }
             speechBubble.SetFloat("PlayerHeight", transform.position.y);
             scoreText.SetFloat("PlayerHeight", transform.position.y);
         }
@@ -212,6 +263,31 @@ public class RocketController : MonoBehaviour
             beatBoss = true;
         }
         //Debug.Log(beatBoss);
+    }
+
+    private void Move()
+    {
+        ParticleSystem.Emit(RocketParticleAmount);
+        rb.AddForce(transform.up * rocketForce);
+        transform.Rotate(0.0f, 0.0f, rocketRotation * movementX * Time.deltaTime, Space.Self);
+        // MAX OUT VELOCITY
+        if (rb.velocity.y > maxYVelocity)
+        {
+            rb.velocity = new Vector2(rb.velocity.x, maxYVelocity);
+        }
+        if (rb.velocity.x > maxXVelocity)
+        {
+            rb.velocity = new Vector2(maxXVelocity, rb.velocity.y);
+        }
+        if (rb.velocity.x < -maxXVelocity)
+        {
+            rb.velocity = new Vector2(-maxXVelocity, rb.velocity.y);
+        }
+        if (rb.velocity.x != 0f)
+        {
+            //rb.velocity = new Vector2(-movementX * 5, rb.velocity.y);
+            rb.AddForce(transform.right * movementX * 1.5f);
+        }
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

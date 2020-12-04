@@ -27,6 +27,7 @@ public class Highscore : MonoBehaviour
         if (score < 0)
         {
             score = 0;
+            PlayerPrefs.SetFloat("highscore", highscore);
         }
         if (score > highscore)
         {

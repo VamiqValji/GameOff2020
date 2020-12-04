@@ -8,12 +8,44 @@ public class RocketSoundController : MonoBehaviour
     private bool inGame = false;
     public GameObject RocketSound;
     public bool isDead = false;
-    
+    public GameObject AndroidToggle;
+    private bool Android = false;
+
+    private void Start()
+    {
+        if (AndroidToggle.activeInHierarchy == true)
+        {
+            Android = true;
+        }
+    }
+
     void Update()
     {
         if (isDead == false)
         {
-            movement = Input.GetAxis("Horizontal");
+            if (Android == true)
+            {
+                if (Input.touchCount > 0)
+                {
+                    if (Input.GetTouch(0).position.x > Screen.width / 2)
+                    {
+                        movement = -1f;
+                    }
+                    else if (Input.GetTouch(0).position.x < Screen.width / 2)
+                    {
+                        movement = 1f;
+                    }
+                }
+                else
+                {
+                    movement = 0f;
+                }
+            }
+            else
+            {
+                movement = Input.GetAxis("Horizontal");
+            }
+
             if (movement != 0)
             {
                 if (inGame == false)
